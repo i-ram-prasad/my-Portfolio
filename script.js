@@ -120,6 +120,48 @@ const ctx = canvas.getContext('2d');
             "max-glare": 0.5
         });
 
+        const form = document.getElementById('contact-form');
+        const result = document.getElementById('form-result');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(form);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+            result.innerHTML = "Sending..."
+
+            fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: json
+                })
+                .then(async (response) => {
+                    let jsonResponse = await response.json();
+                    if (response.status == 200) {
+                        result.innerHTML = jsonResponse.message;
+                        result.classList.add('text-green-500');
+                    } else {
+                        console.log(response);
+                        result.innerHTML = jsonResponse.message;
+                        result.classList.add('text-red-500');
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                    result.innerHTML = "Something went wrong!";
+                    result.classList.add('text-red-500');
+                })
+                .then(function() {
+                    form.reset();
+                    setTimeout(() => {
+                        result.innerHTML = '';
+                        result.classList.remove('text-green-500', 'text-red-500');
+                    }, 5000);
+                });
+        });
         
 
 

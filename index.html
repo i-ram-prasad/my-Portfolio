@@ -238,16 +238,11 @@
                 <h3 class="text-3xl md:text-4xl font-bold text-center">Get In Touch</h3>
                 <p class="text-center text-stone-400 mt-2 mb-12">Have a question or want to work together?</p>
                 <div class="max-w-2xl mx-auto card-bg p-8 rounded-xl">
-                    <!-- STEP 1: Update the form action -->
-                    <form action="https://api.web3forms.com/submit" method="POST">
-
-                        <!-- STEP 2: Add your Web3Forms Access Key here. Replace the value with your actual key -->
+                    <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
                         <input type="hidden" name="access_key" value="f1c17514-99df-4423-b0ae-60d72451e61d">
-
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
                                 <label for="name" class="block text-sm font-medium text-stone-300 mb-2">Name</label>
-                                <!-- STEP 3: Make sure each input has a 'name' attribute -->
                                 <input type="text" name="name" id="name" required class="w-full bg-stone-900/50 border border-stone-700 rounded-lg p-3 focus:ring-amber-500 focus:border-amber-500 transition">
                             </div>
                             <div>
@@ -265,6 +260,8 @@
                             </button>
                         </div>
                     </form>
+                    <!-- This is the new div for showing form status -->
+                    <div id="form-result" class="mt-4 text-center font-medium"></div>
                 </div>
             </section>
         </main>
