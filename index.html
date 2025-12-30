@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ram Prasad - Web Developer & Photographer</title>
-    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <title>Ram Prasad | Salesforce Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./src/output.css">
+    <!-- <link rel="icon" type="image/png" href="./assets/Gemini_Generated_Image_jre7z2jre7z2jre7.png"> -->
+    <link rel="icon" type="image/png" href="./assets/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
+    <link rel="shortcut icon" href="./assets/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="MyWebSite" />
+    <link rel="manifest" href="./assets/site.webmanifest" />
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #1c1917; /* Warm dark stone background */
-            color: #e7e5e4; /* Lighter text color */
+            background-color: #1c1917;
+            color: #e7e5e4;
         }
 
-        /* Style for the canvas background */
         #background-canvas {
             position: fixed;
             top: 0;
@@ -24,295 +30,319 @@
             z-index: 0;
         }
 
-        /* Ensure content is above the canvas */
         .content-wrapper {
             position: relative;
             z-index: 1;
         }
 
-        /* Custom scrollbar with the new warm theme */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #292524;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #57534e;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #78716c;
-        }
-
-        /* Card background with the new warm theme */
         .card-bg {
             background-color: rgba(41, 37, 36, 0.6);
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(8px);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            cursor:pointer;
+            transition: all 0.3s ease;
         }
-        .card-bg:hover {
-            box-shadow: 0em 0 0.5em rgb(190, 148, 71);
-        }
-        
 
-        /* Style for the hexagon image shape */
-        .hexagon-shape {
-            border-radius: 31% 58% 52% 48% / 44% 41% 59% 56%;
-            transition: transform 0.3s ease-in-out;
+        .card-bg:hover {
+            box-shadow: 0 10px 30px -10px rgba(245, 158, 11, 0.3);
+            border-color: rgba(245, 158, 11, 0.4);
+            transform: translateY(-5px);
         }
+
+        .hexagon-shape {
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            transition: all 0.5s ease-in-out;
+        }
+
         .hexagon-shape:hover {
-            transform: scale(1.05) rotate(3deg);
+            border-radius: 50%;
+            transform: scale(1.05);
+        }
+
+        .sf-blue {
+            color: #0176D3;
+        }
+
+        .sf-bg-blue {
+            background-color: #0176D3;
         }
     </style>
+
 </head>
+
 <body class="overflow-x-hidden">
 
     <canvas id="background-canvas"></canvas>
 
     <div class="content-wrapper">
-        <header class=" p-6 md:p-8 flex justify-between items-center fixed top-0 left-0 right-0 z-20 bg-stone-900/30 backdrop-blur-md">
-            <h1 class=" text-xl md:text-2xl font-bold tracking-wider">RP</h1>
-                        <!-- Desktop Navigation (Hidden on mobile) -->
-            <nav class="hidden md:flex space-x-6 text-base">
+        <header
+            class="p-6 md:p-8 flex justify-between items-center fixed top-0 left-0 right-0 z-50 bg-stone-900/60 backdrop-blur-lg border-b border-stone-800">
+            <h1 class="text-2xl font-bold tracking-tighter text-amber-500">RP<span class="text-white">.</span></h1>
+
+            <nav class="hidden md:flex space-x-8 font-medium">
                 <a href="#about" class="hover:text-amber-400 transition-colors">About</a>
-                <a href="#projects" class="hover:text-amber-400 transition-colors">Projects</a>
                 <a href="#skills" class="hover:text-amber-400 transition-colors">Skills</a>
+                <a href="blog.html" target="_blank" class="hover:text-amber-400 transition-colors">Blog</a>
                 <a href="#experience" class="hover:text-amber-400 transition-colors">Experience</a>
-                <a href="#education" class="hover:text-amber-400 transition-colors">Education</a>
-                <a href="#photography" class="hover:text-amber-400 transition-colors">Photography</a>
-                <a href="#contact" class="hover:text-amber-400 transition-colors">Contact</a>
+                <a href="#contact"
+                    class="bg-amber-500 text-stone-900 px-4 py-2 rounded-full text-sm hover:bg-amber-400 transition-all">Hire
+                    Me</a>
             </nav>
 
-            <!-- Hamburger Menu Button (Visible on mobile) -->
-            <button id="menu-btn" class="md:hidden z-30">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            <button id="menu-btn" class="md:hidden text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                    class="w-8 h-8">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
                 </svg>
             </button>
         </header>
 
-        <!-- Mobile Menu (Hidden by default) -->
-        <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-stone-900/95 backdrop-blur-sm z-20 flex flex-col items-center justify-center space-y-8 text-2xl">
-            <a href="#about" class="hover:text-amber-400 transition-colors">About</a>
-            <a href="#projects" class="hover:text-amber-400 transition-colors">Projects</a>
-            <a href="#skills" class="hover:text-amber-400 transition-colors">Skills</a>
-            <a href="#experience" class="hover:text-amber-400 transition-colors">Experience</a>
-            <a href="#education" class="hover:text-amber-400 transition-colors">Education</a>
-            <a href="#photography" class="hover:text-amber-400 transition-colors">Photography</a>
-            <a href="#contact" class="hover:text-amber-400 transition-colors">Contact</a>
+        <div id="mobile-menu"
+            class="hidden fixed inset-0 bg-stone-950 z-40 flex flex-col items-center justify-center space-y-8 text-2xl font-bold">
+            <a href="#about" class="mobile-link">About</a>
+            <a href="#skills" class="mobile-link">Skills</a>
+            <a href="#experience" class="mobile-link">Experience</a>
+            <a href="https://www.salesforce.com/trailblazer/ram-prasad-majhi" class="text-sky-400">Trailhead</a>
+            <a href="#contact" class="mobile-link">Contact</a>
         </div>
 
-        <main class="container mx-auto px-6 md:px-8 pt-24 md:pt-32 pb-12">
-
-        <main class="container mx-auto px-6 md:px-8 pt-24 md:pt-32 pb-12">
-            <section id="about" class="flex flex-col md:flex-row items-center gap-10 md:gap-16 min-h-[80vh]">
-                <div class="w-full md:w-2/3 text-center md:text-left">
-                    <h2 class="text-4xl md:text-6xl font-bold leading-tight">Hi, I'm Ram Prasad</h2>
-                    <p class="text-xl md:text-2xl text-amber-400 mt-2">Web Developer, Salesforce Developer & Photographer</p>
-                    <p class="mt-6 text-stone-300 max-w-xl mx-auto md:mx-0">
-                        I build engaging and responsive web experiences with a passion for clean code and beautiful design. When I'm not coding, I'm capturing the world through my camera lens.
+        <main class="container mx-auto px-6 pt-32">
+            <section id="about" class="flex flex-col md:flex-row items-center gap-12 py-20">
+                <div class="md:w-3/5 text-center md:text-left">
+                    <span class="text-amber-500 font-mono tracking-widest uppercase text-sm">Salesforce
+                        Trailblazer</span>
+                    <h2 class="text-5xl md:text-7xl font-extrabold mt-4">Ram Prasad</h2>
+                    <p class="text-xl md:text-2xl text-stone-400 mt-4 leading-relaxed">
+                        I bridge the gap between <span class="text-sky-400">Salesforce Ecosystems</span> and <span
+                            class="text-white font-semibold">Engaging Web Experiences.</span>
                     </p>
-                    <div class="mt-8 flex justify-center md:justify-start gap-4">
-                        <a href="https://github.com/i-ram-prasad" target="_blank" class="bg-amber-500 hover:bg-amber-600 text-white font-semibold py-3 px-6 rounded-lg transition-transform transform hover:scale-105 shadow-lg shadow-amber-500/20 flex items-center gap-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                            View my GitHub
+
+                    <div class="mt-10 flex flex-wrap justify-center md:justify-start gap-4">
+                        <a href="https://github.com/i-ram-prasad" target="_blank"
+                            class="flex items-center gap-2 bg-stone-800 border border-stone-700 hover:bg-stone-700 px-6 py-3 rounded-xl transition-all">
+                            <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" class="w-5 h-5 invert"
+                                alt=""> GitHub
+                        </a>
+                        <a href="https://www.linkedin.com/in/ram-prasad-majhi-f18075003040/" target="_blank"
+                            class="flex items-center gap-2 bg-[#0077B5] hover:opacity-90 px-6 py-3 rounded-xl transition-all">
+                            <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" class="w-5 h-5 invert"
+                                alt=""> LinkedIn
+                        </a>
+                        <a href="https://www.salesforce.com/trailblazer/ram-prasad-majhi" target="_blank"
+                            class="flex items-center gap-2 sf-bg-blue hover:opacity-90 px-6 py-3 rounded-xl transition-all">
+                            <img src="https://www.vectorlogo.zone/logos/salesforce/salesforce-icon.svg" class="w-5 h-5"
+                                alt=""> Trailhead
                         </a>
                     </div>
-                    <!-- <div class="mt-8 flex justify-center md:justify-center gap-4">
-                        <a href="" target="_blank" class="bg-amber-500 hover:bg-amber-600 text-white font-semibold py-3 px-6 rounded-lg transition-transform transform hover:scale-105 shadow-lg shadow-amber-500/20 flex items-center gap-2"
-
-                    </div> -->
                 </div>
-                <div class="w-1/2 md:w-1/3 mt-8 md:mt-0 ">
-                     <!-- IMPORTANT: Replace this src with the URL of your new photo! -->
-                    <img src="./assets/background.png" alt="Ram Prasad professional headshot" class="hexagon-shape w-64 h-64 md:w-80 md:h-80 object-cover mx-auto shadow-2xl shadow-amber-500/10">
+                <div class="md:w-2/5">
+                    <img src="./assets/background.png" alt="Ram Prasad"
+                        class="hexagon-shape w-64 h-64 md:w-96 md:h-96 object-cover mx-auto shadow-2xl shadow-sky-500/20">
                 </div>
             </section>
 
-            <section id="projects" class="py-20 md:py-32">
-                <h3 class="text-3xl md:text-4xl font-bold text-center">My Projects</h3>
-                <p class="text-center text-stone-400 mt-2 mb-12">Here's some of the work I'm proud of.</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-                    <div class="card-bg p-6 rounded-xl transform hover:-translate-y-2 transition-transform duration-300">
-                        <h4 class="text-xl font-semibold text-amber-400">⏰ Digital Clock</h4>
-                        <p class="mt-2 text-stone-300">A stylish digital clock made with HTML, CSS, and JavaScript. It shows real-time hours, minutes, and seconds with a modern UI and glassmorphism effect.</p>
-                        <div class="mt-4 flex gap-4 text-sm">
-                            <a href="https://i-ram-prasad.github.io/Digital-Clock/" target="_blank" class="text-amber-400 hover:underline">Live Demo</a>
-                            <a href="https://github.com/i-ram-prasad/Digital-Clock.git" target="_blank" class="text-stone-400 hover:underline">Source Code</a>
+            <section id="skills" class="py-20">
+                <h3 class="text-3xl font-bold text-center mb-12">Expertise Stack</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                    <div class="card-bg p-6 rounded-2xl text-center">
+                        <img src="https://www.vectorlogo.zone/logos/salesforce/salesforce-icon.svg"
+                            class="w-12 h-12 mx-auto mb-4" alt="">
+                        <p class="font-bold">Salesforce</p>
+                    </div>
+                    <div class="card-bg p-6 rounded-2xl text-center">
+                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg"
+                            class="w-12 h-12 mx-auto mb-4" alt="">
+                        <p class="font-bold">LWC / JS</p>
+                    </div>
+                    <div class="card-bg p-6 rounded-2xl text-center">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuresqldatabase/azuresqldatabase-original.svg"
+                        class="w-12 h-12 mx-auto mb-4" alt="">
+                        <p class="font-bold">SQL</p>
+                    </div>
+                    <div class="card-bg p-6 rounded-2xl text-center">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-plain.svg"
+                            class="w-12 h-12 mx-auto mb-4" alt="">
+                        <p class="font-bold">Java</p>
+                    </div>
+                    <div class="card-bg p-6 rounded-2xl text-center">
+                        <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg"
+                            class="w-12 h-12 mx-auto mb-4" alt="">
+                        <p class="font-bold">Git/SFDX</p>
+                    </div>
+                    <div class="card-bg p-6 rounded-2xl text-center">
+                        
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apex/apex-original.svg" 
+          
+                            class="w-12 h-12 mx-auto mb-4" alt="">
+                        <p class="font-bold">Salesforc Apex</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="experience" class="py-20">
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-8 flex items-center gap-2">
+                            <span class="sf-blue">●</span> Professional Journey
+                        </h3>
+                        <div class="space-y-8 border-l-2 border-stone-800 pl-6">
+                            <div>
+                                <h4 class="text-amber-500 font-bold">Salesforce Developer Intern</h4>
+                                <p class="text-sm text-stone-500">SaasGuru | 2024</p>
+                                <p class="text-stone-400 mt-2 text-sm">Built Apex-based F1 Tracker boost user efficiency
+                                    by 30%.</p>
+                            </div>
+                            <div>
+                                <h4 class="text-amber-500 font-bold">Frontend Developer Intern</h4>
+                                <p class="text-sm text-stone-500">Corizo.in | 2023</p>
+                                <p class="text-stone-400 mt-2 text-sm">Optimized e-commerce load times by 40%.</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="card-bg p-6 rounded-xl transform hover:-translate-y-2 transition-transform duration-300">
-                        <h4 class="text-xl font-semibold text-amber-400">Simple To-Do List Application</h4>
-                        <p class="mt-2 text-stone-300">This is a clean, simple, and responsive To-Do List application built with HTML, CSS, and vanilla JavaScript. It allows users to add, delete, and mark tasks as complete. The application leverages the browser's Local Storage to ensure that your tasks are saved even after you close the tab or refresh the page.</p>
-                        <div class="mt-4 flex gap-4 text-sm">
-                            <a href="https://i-ram-prasad.github.io/TO-DO-List/" target="_blank" class="text-amber-400 hover:underline">Live Demo</a>
-                            <a href="https://github.com/i-ram-prasad/TO-DO-List.git" target="_blank" class="text-stone-400 hover:underline">Source Code</a>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-8 flex items-center gap-2">
+                            <span class="sf-blue">●</span> Education
+                        </h3>
+                        <div class="space-y-8 border-l-2 border-stone-800 pl-6">
+                            <div>
+                                <h4 class="text-white font-bold">B.Tech in Computer Science</h4>
+                                <p class="text-sm text-stone-500">National Institute of Science and Technology | 2021 - 2025</p>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold">Diploma in Electronics</h4>
+                                <p class="text-sm text-stone-500">BIET | 2018 - 2021</p>
+                            </div>
                         </div>
                     </div>
-                    <!-- <div class="card-bg p-6 rounded-xl transform hover:-translate-y-2 transition-transform duration-300">
-                        <h4 class="text-xl font-semibold text-amber-400">Project Title 3</h4>
-                        <p class="mt-2 text-stone-300">A brief description of the project, the technologies used, and the problem it solves.</p>
-                        <div class="mt-4 flex gap-4 text-sm">
-                            <a href="#" target="_blank" class="text-amber-400 hover:underline">Live Demo</a>
-                            <a href="#" target="_blank" class="text-stone-400 hover:underline">Source Code</a>
+                </div>
+            </section>
+
+            <!-- <section id="blog" class="py-20">
+                <div class="flex justify-between items-end mb-12">
+                    <div>
+                        <span class="text-amber-500 font-mono text-sm uppercase tracking-widest">Articles</span>
+                        <h3 class="text-4xl font-bold mt-2">Cloud Chronicles</h3>
+                    </div>
+                    <a href="https://dev.to" target="_blank"
+                        class="text-stone-500 hover:text-amber-400 text-sm font-medium transition-colors">View All Posts
+                        →</a>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <article class="card-bg rounded-2xl overflow-hidden flex flex-col">
+                        <div class="h-48 bg-stone-800 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=500"
+                                class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500"
+                                alt="LWC Post">
                         </div>
-                    </div> -->
+                        <div class="p-6">
+                            <div class="flex items-center gap-3 mb-3">
+                                <span
+                                    class="bg-sky-500/10 text-sky-400 text-[10px] font-bold px-2 py-1 rounded uppercase">Salesforce</span>
+                                <span class="text-stone-500 text-xs">Dec 28, 2025</span>
+                            </div>
+                            <h4 class="text-xl font-bold mb-3 hover:text-amber-400 transition-colors">
+                                <a href="#">Mastering LWC: Beyond the Basics</a>
+                            </h4>
+                            <p class="text-stone-400 text-sm leading-relaxed mb-4">
+                                Deep dive into reactive properties, wire service patterns, and optimizing component
+                                communication in Lightning Web Components.
+                            </p>
+                            <a href="#" class="text-amber-500 text-sm font-bold flex items-center gap-2 group">
+                                Read More <span class="group-hover:translate-x-1 transition-transform">→</span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="card-bg rounded-2xl overflow-hidden flex flex-col">
+                        <div class="h-48 bg-stone-800 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&q=80&w=500"
+                                class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500"
+                                alt="Apex Post">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center gap-3 mb-3">
+                                <span
+                                    class="bg-amber-500/10 text-amber-500 text-[10px] font-bold px-2 py-1 rounded uppercase">Development</span>
+                                <span class="text-stone-500 text-xs">Dec 15, 2025</span>
+                            </div>
+                            <h4 class="text-xl font-bold mb-3 hover:text-amber-400 transition-colors">
+                                <a href="#">Apex Best Practices for Performance</a>
+                            </h4>
+                            <p class="text-stone-400 text-sm leading-relaxed mb-4">
+                                How to write bulk-safe triggers and avoid governor limits using asynchronous Apex and
+                                efficient SOQL queries.
+                            </p>
+                            <a href="#" class="text-amber-500 text-sm font-bold flex items-center gap-2 group">
+                                Read More <span class="group-hover:translate-x-1 transition-transform">→</span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="card-bg rounded-2xl overflow-hidden flex flex-col">
+                        <div class="h-48 bg-stone-800 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1452587925148-ce544e77e70d?auto=format&fit=crop&q=80&w=500"
+                                class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500"
+                                alt="Photography Post">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center gap-3 mb-3">
+                                <span
+                                    class="bg-purple-500/10 text-purple-400 text-[10px] font-bold px-2 py-1 rounded uppercase">Photography</span>
+                                <span class="text-stone-500 text-xs">Nov 30, 2025</span>
+                            </div>
+                            <h4 class="text-xl font-bold mb-3 hover:text-amber-400 transition-colors">
+                                <a href="#">The Art of Visual Storytelling</a>
+                            </h4>
+                            <p class="text-stone-400 text-sm leading-relaxed mb-4">
+                                Exploring how photography principles like composition and light can actually make you a
+                                better UI/UX developer.
+                            </p>
+                            <a href="#" class="text-amber-500 text-sm font-bold flex items-center gap-2 group">
+                                Read More <span class="group-hover:translate-x-1 transition-transform">→</span>
+                            </a>
+                        </div>
+                    </article>
                 </div>
-            </section>
+            </section> -->
 
-            <section id="skills" class="py-20 md:py-32">
-                <h3 class="text-3xl md:text-4xl font-bold text-center">My Skills</h3>
-                <p class="text-center text-stone-400 mt-2 mb-12">The technologies I work with.</p>
-                <div class="max-w-4xl mx-auto grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4 text-center">
-                    <!-- HTML  -->
-                    <div class="card-bg p-4 rounded-tl-lg rounded-br-lg flex items-center justify-center font-semibold " > <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 256 361"><path fill="#e44d26" d="m255.555 70.766l-23.241 260.36l-104.47 28.962l-104.182-28.922L.445 70.766z"/><path fill="#f16529" d="m128 337.95l84.417-23.403l19.86-222.49H128z"/><path fill="#ebebeb" d="M82.82 155.932H128v-31.937H47.917l.764 8.568l7.85 88.01H128v-31.937H85.739zm7.198 80.61h-32.06l4.474 50.146l65.421 18.16l.147-.04V271.58l-.14.037l-35.568-9.604z"/><path d="M24.18 0h16.23v16.035h14.847V0h16.231v48.558h-16.23v-16.26H40.411v16.26h-16.23V0M92.83 16.103H78.544V0h44.814v16.103h-14.295v32.455h-16.23V16.103zM130.47 0h16.923l10.41 17.062L168.203 0h16.93v48.558h-16.164V24.49l-11.166 17.265h-.28L146.35 24.49v24.068h-15.88zm62.74 0h16.235v32.508h22.824v16.05h-39.06z"/><path fill="#fff" d="M127.89 220.573h39.327l-3.708 41.42l-35.62 9.614v33.226l65.473-18.145l.48-5.396l7.506-84.08l.779-8.576H127.89zm0-64.719v.078h77.143l.64-7.178l1.456-16.191l.763-8.568H127.89z"/></svg></div>
-
-                    <!-- CSS -->
-                    <div class="card-bg p-4 rounded-tl-lg rounded-br-lg flex items-center justify-center font-semibold"><svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 256 361"><path fill="#264de4" d="M127.844 360.088L23.662 331.166L.445 70.766h255.11l-23.241 260.36z"/><path fill="#2965f1" d="m212.417 314.547l19.86-222.49H128V337.95z"/><path fill="#ebebeb" d="m53.669 188.636l2.862 31.937H128v-31.937zm-5.752-64.641l2.903 31.937H128v-31.937zM128 271.58l-.14.037l-35.568-9.604l-2.274-25.471h-32.06l4.474 50.146l65.421 18.16l.147-.04z"/><path d="M60.484 0h38.68v16.176H76.66v16.176h22.506v16.175H60.484zm46.417 0h38.681v14.066h-22.505v2.813h22.505v32.352h-38.68V34.46h22.505v-2.813H106.9zm46.418 0H192v14.066h-22.505v2.813H192v32.352h-38.681V34.46h22.505v-2.813H153.32z"/><path fill="#fff" d="m202.127 188.636l5.765-64.641H127.89v31.937h45.002l-2.906 32.704H127.89v31.937h39.327l-3.708 41.42l-35.62 9.614v33.226l65.473-18.145l.48-5.396l7.506-84.08z"/></svg></div>
-
-                    <!-- JavaScript -->
-                    <div class="card-bg p-4 rounded-tl-lg rounded-br-lg flex items-center justify-center font-semibold"><svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 256 256"><path fill="#f7df1e" d="M0 0h256v256H0z"/><path d="m67.312 213.932l19.59-11.856c3.78 6.701 7.218 12.371 15.465 12.371c7.905 0 12.89-3.092 12.89-15.12v-81.798h24.057v82.138c0 24.917-14.606 36.259-35.916 36.259c-19.245 0-30.416-9.967-36.087-21.996m85.07-2.576l19.588-11.341c5.157 8.421 11.859 14.607 23.715 14.607c9.969 0 16.325-4.984 16.325-11.858c0-8.248-6.53-11.17-17.528-15.98l-6.013-2.58c-17.357-7.387-28.87-16.667-28.87-36.257c0-18.044 13.747-31.792 35.228-31.792c15.294 0 26.292 5.328 34.196 19.247l-18.732 12.03c-4.125-7.389-8.591-10.31-15.465-10.31c-7.046 0-11.514 4.468-11.514 10.31c0 7.217 4.468 10.14 14.778 14.608l6.014 2.577c20.45 8.765 31.963 17.7 31.963 37.804c0 21.654-17.012 33.51-39.867 33.51c-22.339 0-36.774-10.654-43.819-24.574"/></svg></div>
-
-                    <!-- Tailwind CSS -->
-                    <div class="card-bg p-4 rounded-tl-lg rounded-br-lg flex items-center justify-center font-semibold "><svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 256 154"><defs><linearGradient id="SVG80JqDb2a" x1="-2.778%" x2="100%" y1="32%" y2="67.556%"><stop offset="0%" stop-color="#2298bd"/><stop offset="100%" stop-color="#0ed7b5"/></linearGradient></defs><path fill="url(#SVG80JqDb2a)" d="M128 0Q76.8 0 64 51.2Q83.2 25.6 108.8 32c9.737 2.434 16.697 9.499 24.401 17.318C145.751 62.057 160.275 76.8 192 76.8q51.2 0 64-51.2q-19.2 25.6-44.8 19.2c-9.737-2.434-16.697-9.499-24.401-17.318C174.249 14.743 159.725 0 128 0M64 76.8q-51.2 0-64 51.2q19.2-25.6 44.8-19.2c9.737 2.434 16.697 9.499 24.401 17.318C81.751 138.857 96.275 153.6 128 153.6q51.2 0 64-51.2q-19.2 25.6-44.8 19.2c-9.737-2.434-16.697-9.499-24.401-17.318C110.249 91.543 95.725 76.8 64 76.8"/></svg></div>
-
-                    <!-- SQL -->
-                    <div class="card-bg p-4 rounded-tl-lg rounded-br-lg flex items-center justify-center font-semibold "><svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 32 32"><path fill="#f00" d="M8.562 15.256A21.2 21.2 0 0 0 16 16.449a21.2 21.2 0 0 0 7.438-1.194c1.864-.727 2.525-1.535 2.525-2V9.7a10.4 10.4 0 0 1-2.084 1.076A22.3 22.3 0 0 1 16 12.078a22.4 22.4 0 0 1-7.879-1.3A10.3 10.3 0 0 1 6.037 9.7v3.55c0 .474.663 1.278 2.525 2.006m0 6.705a15.6 15.6 0 0 0 2.6.741a25 25 0 0 0 4.838.453a25 25 0 0 0 4.838-.452a15.6 15.6 0 0 0 2.6-.741c1.864-.727 2.525-1.535 2.525-2v-3.39a10.7 10.7 0 0 1-1.692.825A23.5 23.5 0 0 1 16 18.74a23.5 23.5 0 0 1-8.271-1.348a11 11 0 0 1-1.692-.825v3.393c0 .466.663 1.271 2.525 2.001M16 30c5.5 0 9.963-1.744 9.963-3.894v-2.837a10.5 10.5 0 0 1-1.535.762l-.157.063A23.5 23.5 0 0 1 16 25.445a23.4 23.4 0 0 1-8.271-1.351l-.157-.063a10.5 10.5 0 0 1-1.535-.762v2.837C6.037 28.256 10.5 30 16 30"/><ellipse cx="16" cy="5.894" fill="#f00" rx="9.963" ry="3.894"/></svg></div>
-
-                    <!-- Java  -->
-                    <div class="card-bg p-4 rounded-tl-lg rounded-br-lg flex items-center justify-center font-semibold "><svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 128 128"><path fill="#0074bd" d="M52.581 67.817s-3.284 1.911 2.341 2.557c6.814.778 10.297.666 17.805-.753c0 0 1.979 1.237 4.735 2.309c-16.836 7.213-38.104-.418-24.881-4.113m-2.059-9.415s-3.684 2.729 1.945 3.311c7.28.751 13.027.813 22.979-1.103c0 0 1.373 1.396 3.536 2.157c-20.352 5.954-43.021.469-28.46-4.365"/><path fill="#ea2d2e" d="M67.865 42.431c4.151 4.778-1.088 9.074-1.088 9.074s10.533-5.437 5.696-12.248c-4.519-6.349-7.982-9.502 10.771-20.378c.001 0-29.438 7.35-15.379 23.552"/><path fill="#0074bd" d="M90.132 74.781s2.432 2.005-2.678 3.555c-9.716 2.943-40.444 3.831-48.979.117c-3.066-1.335 2.687-3.187 4.496-3.576c1.887-.409 2.965-.334 2.965-.334c-3.412-2.403-22.055 4.719-9.469 6.762c34.324 5.563 62.567-2.506 53.665-6.524m-35.97-26.134s-15.629 3.713-5.534 5.063c4.264.57 12.758.439 20.676-.225c6.469-.543 12.961-1.704 12.961-1.704s-2.279.978-3.93 2.104c-15.874 4.175-46.533 2.23-37.706-2.038c7.463-3.611 13.533-3.2 13.533-3.2M82.2 64.317c16.135-8.382 8.674-16.438 3.467-15.353c-1.273.266-1.845.496-1.845.496s.475-.744 1.378-1.063c10.302-3.62 18.223 10.681-3.322 16.345c0 0 .247-.224.322-.425"/><path fill="#ea2d2e" d="M72.474 1.313s8.935 8.939-8.476 22.682c-13.962 11.027-3.184 17.313-.006 24.498c-8.15-7.354-14.128-13.828-10.118-19.852c5.889-8.842 22.204-13.131 18.6-27.328"/><path fill="#0074bd" d="M55.749 87.039c15.484.99 39.269-.551 39.832-7.878c0 0-1.082 2.777-12.799 4.981c-13.218 2.488-29.523 2.199-39.191.603c0 0 1.98 1.64 12.158 2.294"/><path fill="#ea2d2e" d="M94.866 100.181h-.472v-.264h1.27v.264h-.47v1.317h-.329zm2.535.066h-.006l-.468 1.251h-.216l-.465-1.251h-.005v1.251h-.312v-1.581h.457l.431 1.119l.432-1.119h.454v1.581h-.302zm-44.19 14.79c-1.46 1.266-3.004 1.978-4.391 1.978c-1.974 0-3.045-1.186-3.045-3.085c0-2.055 1.146-3.56 5.738-3.56h1.697zm4.031 4.548v-14.077c0-3.599-2.053-5.973-6.997-5.973c-2.886 0-5.416.714-7.473 1.622l.592 2.493c1.62-.595 3.715-1.147 5.771-1.147c2.85 0 4.075 1.147 4.075 3.521v1.779h-1.424c-6.921 0-10.044 2.685-10.044 6.723c0 3.479 2.058 5.456 5.933 5.456c2.49 0 4.351-1.028 6.088-2.533l.316 2.137h3.163zm13.452 0h-5.027l-6.051-19.689h4.391l3.756 12.099l.835 3.635c1.896-5.258 3.24-10.596 3.912-15.733h4.271c-1.143 6.481-3.203 13.598-6.087 19.688m19.288-4.548c-1.465 1.266-3.01 1.978-4.392 1.978c-1.976 0-3.046-1.186-3.046-3.085c0-2.055 1.149-3.56 5.736-3.56h1.701v4.667zm4.033 4.548v-14.077c0-3.599-2.059-5.973-6.999-5.973c-2.889 0-5.418.714-7.475 1.622l.593 2.493c1.62-.595 3.718-1.147 5.774-1.147c2.846 0 4.074 1.147 4.074 3.521v1.779h-1.424c-6.923 0-10.045 2.685-10.045 6.723c0 3.479 2.056 5.456 5.93 5.456c2.491 0 4.349-1.028 6.091-2.533l.318 2.137h3.163zm-56.693 3.346c-1.147 1.679-3.005 3.008-5.037 3.757l-1.989-2.345c1.547-.794 2.872-2.075 3.489-3.269c.532-1.063.753-2.43.753-5.701V92.891h4.284v22.173c0 4.375-.348 6.144-1.5 7.867"/></svg></div>
-
-                    <!-- MongoDB -->
-                    <div class="card-bg p-4 rounded-tl-lg rounded-br-lg flex items-center justify-center font-semibold "><svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 128 128"><path fill="#94795d" fill-rule="evenodd" d="M87.259 100.139c.169-.325.331-.612.469-.909c.087-.19.221-.228.41-.223c1.133.032 2.266.067 3.4.078c.963.01 1.928-.008 2.892-.019c1.086-.013 2.172-.07 3.257-.039c1.445.042 2.853.325 4.16.968c1.561.769 2.742 1.94 3.547 3.483a8.7 8.7 0 0 1 .931 3.14c.172 1.608.059 3.179-.451 4.717c-.632 1.906-1.832 3.365-3.499 4.458c-1.283.841-2.69 1.338-4.198 1.622c-1.596.301-3.197.204-4.798.209c-1.756.007-3.511-.031-5.267-.051c-.307-.003-.351-.061-.27-.354l.075-.27c.171-.538.263-.562.809-.652a2.8 2.8 0 0 0 1.087-.413c.184-.122.26-.44.332-.685c.062-.214.065-.449.067-.675c.025-3.425.051-6.849.065-10.272a44 44 0 0 0-.065-2.596c-.034-.605-.357-1.019-1.077-1.162c-.56-.111-1.124-.197-1.687-.296zm16.076 8.293c-.076-.682-.113-1.37-.235-2.042c-.292-1.613-.998-3.018-2.238-4.119c-2.005-1.779-4.419-2.053-6.949-1.841c-.576.048-.7.245-.709.837c-.014.84-.028 1.68-.029 2.52q-.006 3.996 0 7.992q0 1.138.031 2.272c.024.774.305 1.429 1.063 1.729c1.195.473 2.452.529 3.706.336c2.003-.307 3.404-1.474 4.344-3.223c.744-1.388.954-2.903 1.016-4.461m4.869 9.071c-.024-.415.146-.758.356-1.073c.057-.085.253-.081.388-.108l1.146-.227c.405-.086.618-.358.675-.755c.038-.262.074-.527.077-.792a880 880 0 0 0 .059-6.291c.01-2.1.002-4.2.002-6.3l-.009-.401c-.041-.675-.367-1.025-1.037-1.124l-1.453-.221c-.179-.024-.244-.11-.179-.269c.112-.271.219-.552.377-.796c.059-.09.258-.125.392-.122c.694.01 1.388.062 2.082.061l6.041-.036c1.164-.001 2.288.202 3.332.759c1.149.612 1.792 1.559 1.976 2.849c.192 1.355-.219 2.497-1.209 3.404c-.407.374-.934.618-1.406.922l-.154.096c.438.161.855.3 1.261.466c1.188.487 2.133 1.248 2.633 2.463c.395.959.395 1.959.161 2.953c-.364 1.556-1.389 2.591-2.722 3.374c-1.251.735-2.605 1.163-4.047 1.235c-1.33.067-2.666.042-3.999.057l-.772.004a996 996 0 0 1-3.854-.096zm5.537-6.089h.013c0 .658-.009 1.316.003 1.974c.008.426-.007.864.085 1.274c.138.613.418 1.166 1.106 1.342a6.7 6.7 0 0 0 2.818.124c1.177-.205 2.116-.795 2.631-1.916c.382-.833.439-1.716.308-2.618c-.174-1.188-.805-2.05-1.854-2.615c-.688-.371-1.422-.598-2.204-.628c-.876-.033-1.753-.035-2.629-.062c-.246-.007-.28.118-.279.32c.005.934.002 1.869.002 2.805m1.865-4.475c.479-.024 1.021-.031 1.56-.085c1.032-.103 1.759-.622 2.138-1.609c.193-.501.185-1.017.19-1.538c.015-1.357-.777-2.469-2.066-2.929c-.995-.355-2.021-.361-3.053-.333c-.418.011-.605.194-.611.615l-.062 5.489c-.003.218.091.312.303.319z" clip-rule="evenodd"/><path fill="#50382b" fill-rule="evenodd" d="m10.543 116.448l-.073.944c-.68 0-1.307-.005-1.934.002c-1.181.012-2.362.031-3.544.048l-.114.007c-.169-.02-.476-.02-.484-.07c-.05-.281-.034-.576-.021-.867c.001-.033.116-.075.183-.091l.919-.205c.573-.149.775-.396.802-.988c.031-.667.062-1.335.065-2.002c.009-1.642-.001-3.282.006-4.924c.001-.384-.132-.67-.49-.826a44 44 0 0 0-1.285-.546c-.204-.082-.469-.127-.445-.401c.024-.279.281-.352.523-.407c1.002-.229 2.005-.452 3.004-.696c.322-.079.63-.212 1.015-.346c.02.208.057.406.053.604l-.059.941c-.001.106.054.248.133.307c.048.037.209-.03.289-.092c.854-.65 1.758-1.211 2.789-1.538c1.597-.507 2.968-.037 3.928 1.34c.338.485.339.485.808.146c.805-.585 1.647-1.101 2.589-1.441c2.068-.747 4.055.201 4.774 2.284c.262.756.362 1.537.36 2.335l-.019 5.298c-.001.437.144.686.56.822c.467.153.951.258 1.477.396l-.122.911c-.598 0-1.148-.004-1.698.001c-1.344.012-2.688.019-4.031.05c-.234.006-.295-.052-.307-.271c-.039-.701-.045-.7.615-.858l.222-.057c.645-.176.86-.374.865-1.028c.015-1.878.054-3.761-.041-5.635c-.099-1.944-1.642-2.979-3.526-2.481a5.2 5.2 0 0 0-1.69.814c-.175.125-.208.269-.194.488q.081 1.242.093 2.486c.012 1.451-.006 2.902 0 4.354c.002.588.203.813.784.949l.863.199l.16.036c.012.276.023.552.01.828c-.008.173-.142.188-.292.185c-.839-.021-1.679-.049-2.518-.047c-1.021.002-2.041.031-3.061.049h-.24c0-.293-.014-.573.01-.852c.005-.067.123-.161.204-.182l1.006-.213c.427-.105.631-.324.655-.758c.114-2.01.196-4.021.007-6.03a3.7 3.7 0 0 0-.326-1.145c-.515-1.138-1.674-1.613-3.011-1.271c-.635.162-1.208.453-1.75.82a.8.8 0 0 0-.378.695q.002 3.008.013 6.014l.011.773c.012.539.241.823.776.939c.344.078.692.131 1.082.203" clip-rule="evenodd"/><path fill="#4f382b" fill-rule="evenodd" d="M71.001 105.285c.155.754.152 1.432-.402 1.946c-.55.511-1.246.339-1.925.225c.063.358.133.662.167.97c.247 2.289-.738 3.988-2.861 4.959c-.802.366-1.653.502-2.522.572c-.432.034-.81.364-.851.719c-.042.36.184.73.636.838c.533.127 1.089.163 1.636.226c1.174.134 2.361.195 3.521.405c1.754.316 2.733 1.847 2.424 3.609c-.275 1.568-1.183 2.709-2.449 3.584c-2.133 1.478-4.473 1.91-6.965 1.156c-1.425-.432-2.43-1.369-2.777-2.885c-.174-.759.011-1.446.582-1.961c.679-.61 1.418-1.154 2.129-1.73l.23-.231l-.264-.185c-.725-.344-1.305-.815-1.53-1.633c-.077-.277.003-.459.238-.601q.6-.361 1.193-.735c.186-.116.37-.236.543-.37c.236-.18.215-.314-.067-.418c-.656-.242-1.239-.593-1.691-1.133c-.755-.901-.969-1.974-.907-3.107c.097-1.77 1.058-2.936 2.62-3.686c1.857-.891 3.72-.947 5.613-.135c.7.3 1.438.364 2.189.312c.561-.04 1.051-.252 1.49-.711m-6.843 12.681c-1.394-.012-1.831.16-2.649.993c-.916.934-.911 2.229.003 3.167c.694.711 1.56 1.044 2.523 1.144c1.125.116 2.233.069 3.255-.494c1.09-.603 1.632-1.723 1.387-2.851c-.203-.931-.889-1.357-1.724-1.602c-.95-.278-1.932-.331-2.795-.357m-2.738-8.908c.051.387.072.779.158 1.158c.223.982.65 1.845 1.627 2.282c1.147.515 2.612.294 3.114-1.316a4.85 4.85 0 0 0-.113-3.274a2.5 2.5 0 0 0-.91-1.184c-.996-.695-2.793-.787-3.525.749c-.238.499-.331 1.03-.351 1.585" clip-rule="evenodd"/><path fill="#4f372b" fill-rule="evenodd" d="M47.35 105.038c.037.171.111.365.113.56c.003.371-.037.742-.058 1.113v.322l.314-.24c.86-.708 1.784-1.311 2.86-1.636c1.942-.585 3.882.478 4.515 2.456c.24.752.335 1.525.344 2.311c.02 1.746.032 3.492.05 5.238c.006.627.078.739.671.92a7.4 7.4 0 0 0 1.03.229c.191.03.273.105.263.292l.002.172c-.007.723-.057.756-.758.754c-1.678-.003-3.355.007-5.033.021c-.5.004-.501.019-.551-.475l-.01-.284c.031-.426.041-.422.46-.484c.282-.042.562-.107.837-.179c.283-.073.419-.282.457-.562c.019-.142.044-.284.043-.426c-.024-1.908.007-3.818-.097-5.723c-.084-1.541-1.26-2.459-2.807-2.354a4.05 4.05 0 0 0-2.071.743c-.413.289-.496.706-.494 1.155q.014 2.676.044 5.353c.004.391.015.782.052 1.17c.039.424.188.595.604.687c.398.088.804.139 1.229.21l.036.328c.014.765-.066.822-.809.819c-1.735-.007-3.47.004-5.204.023c-.273.004-.389-.082-.382-.348l-.004-.114c-.045-.689-.025-.715.627-.827l.308-.062c.706-.159.887-.347.897-1.064c.033-2.271.045-4.541.068-6.812c.003-.326-.12-.579-.424-.714a54 54 0 0 0-1.287-.544c-.238-.098-.51-.16-.519-.489c-.006-.232.242-.437.581-.506c.681-.138 1.368-.253 2.041-.422c.67-.167 1.328-.391 2.062-.611" clip-rule="evenodd"/><path fill="#4f382b" fill-rule="evenodd" d="M84.865 110.97c-.032 2.121-.583 3.836-2.083 5.123c-1.9 1.633-4.864 2.188-7.287.967c-1.034-.521-1.794-1.32-2.289-2.357c-.759-1.595-.949-3.272-.553-4.99c.392-1.699 1.421-2.93 2.961-3.727c1.584-.819 3.252-1.139 5.011-.709c2.225.543 3.824 2.357 4.142 4.667c.057.405.079.815.098 1.026m-2.577 1.149l-.086-.01c0-.2.011-.4-.002-.6c-.073-1.246-.353-2.433-1.075-3.476c-.685-.988-1.618-1.571-2.832-1.656c-1.359-.096-2.501.664-2.902 2.052c-.602 2.084-.398 4.115.66 6.024c.461.832 1.144 1.446 2.059 1.769c1.793.631 3.383-.186 3.85-2.022c.172-.678.222-1.387.328-2.081" clip-rule="evenodd"/><path fill="#4f372b" fill-rule="evenodd" d="M40.819 111.134c-.037 1.522-.396 2.929-1.336 4.152c-1.007 1.31-2.391 2.01-3.965 2.305c-1.861.348-3.609.032-5.104-1.217c-.71-.594-1.195-1.355-1.515-2.221c-.525-1.42-.656-2.875-.333-4.358c.345-1.587 1.241-2.8 2.63-3.614c1.606-.939 3.339-1.358 5.19-.936c2.38.544 3.754 2.095 4.262 4.443c.102.474.116.964.171 1.446m-2.606 1.004l-.069-.01v-.286c-.039-1.396-.312-2.726-1.145-3.886c-.617-.861-1.443-1.401-2.502-1.552c-1.726-.246-2.854.778-3.228 2.169c-.488 1.817-.335 3.612.42 5.335c.471 1.074 1.215 1.911 2.358 2.317c1.782.633 3.396-.205 3.847-2.034c.166-.669.216-1.367.319-2.053" clip-rule="evenodd"/><path fill="#439934" fill-rule="evenodd" d="M82.362 33.544c1.227 3.547 2.109 7.168 2.4 10.92c.36 4.656.196 9.28-.786 13.859l-.126.366c-.308.001-.622-.038-.923.009c-2.543.4-5.083.814-7.624 1.226c-2.627.426-5.256.835-7.878 1.289c-.929.16-2.079-.031-2.454 1.253l-.18.061l.127-7.678l-.129-18.526l1.224-.21c2.001-.327 4.002-.66 6.006-.979c2.39-.379 4.782-.749 7.174-1.119c1.056-.162 2.113-.313 3.169-.471" clip-rule="evenodd"/><path fill="#45a538" fill-rule="evenodd" d="M62.265 84.911c-1.291-1.11-2.627-2.171-3.864-3.339c-6.658-6.28-11.529-13.673-13.928-22.586c-.661-2.452-1.101-4.945-1.243-7.479c-.1-1.774-.243-3.563-.117-5.328c.333-4.693 1.012-9.341 2.388-13.862l.076-.105c.134.178.326.336.394.537q2.015 5.934 4.004 11.879c4.169 12.451 8.333 24.905 12.509 37.354c.082.243.293.442.445.661z" clip-rule="evenodd"/><path fill="#46a037" fill-rule="evenodd" d="M82.362 33.544c-1.057.157-2.114.309-3.169.471c-2.392.37-4.784.74-7.174 1.119c-2.003.318-4.004.651-6.006.979l-1.224.21l-.01-.798c-.041-.656-.109-1.312-.118-1.968l-.137-12.554c-.032-2.619-.08-5.238-.133-7.856a198 198 0 0 0-.141-4.88c-.04-.873-.181-1.742-.237-2.615c-.033-.502.011-1.008.022-1.512c.624 1.209 1.235 2.427 1.876 3.627c1.013 1.897 2.628 3.295 4.083 4.82c5.746 6.031 9.825 13.039 12.368 20.957" clip-rule="evenodd"/><path fill="#409433" fill-rule="evenodd" d="m64.792 62.527l.18-.061c.375-1.284 1.525-1.093 2.454-1.253c2.622-.454 5.251-.863 7.878-1.289c2.541-.411 5.081-.825 7.624-1.226c.301-.047.615-.008.923-.009c-.475 1.696-.849 3.429-1.452 5.078c-.685 1.87-1.513 3.696-2.392 5.486a37.6 37.6 0 0 1-4.853 7.458c-1.466 1.762-3.1 3.393-4.737 5.002c-.906.889-1.972 1.614-2.966 2.414l-.258-.176l-.927-.792l-.959-2.104a31.7 31.7 0 0 1-1.065-7.516l.018-.428l.131-1.854c.043-.633.101-1.265.128-1.898c.096-2.276.182-4.554.273-6.832" clip-rule="evenodd"/><path fill="#4faa41" fill-rule="evenodd" d="M64.792 62.527c-.09 2.278-.176 4.557-.273 6.835c-.027.634-.084 1.266-.128 1.898l-.584.221c-1.298-3.821-2.597-7.602-3.867-11.392c-2.101-6.271-4.176-12.551-6.274-18.824a3423 3423 0 0 0-5.118-15.176c-.081-.236-.311-.422-.471-.631l3.74-6.877c.129.223.298.432.379.672c1.73 5.12 3.457 10.241 5.169 15.367c2.228 6.67 4.441 13.343 6.667 20.014c.089.266.235.512.375.811l.512-.596z" clip-rule="evenodd"/><path fill="#4aa73c" fill-rule="evenodd" d="M48.076 25.458c.161.209.391.395.471.631a3380 3380 0 0 1 5.118 15.176c2.098 6.273 4.173 12.553 6.274 18.824c1.27 3.79 2.569 7.57 3.867 11.392l.584-.221l-.131 1.854l-.119.427c-.203 2.029-.374 4.062-.622 6.087c-.124 1.015-.389 2.011-.59 3.015c-.151-.219-.363-.418-.445-.661c-4.177-12.449-8.34-24.903-12.509-37.354a3011 3011 0 0 0-4.004-11.879c-.068-.201-.26-.359-.394-.537z" clip-rule="evenodd"/><path fill="#57ae47" fill-rule="evenodd" d="m64.918 54.849l-.512.596c-.14-.299-.286-.545-.375-.811c-2.226-6.671-4.439-13.344-6.667-20.014a4618 4618 0 0 0-5.169-15.367c-.081-.24-.25-.449-.379-.672l4.625-6.084c.146.194.354.367.429.586q1.925 5.64 3.822 11.289c1.182 3.518 2.346 7.04 3.542 10.552c.08.235.359.401.545.601l.01.798z" clip-rule="evenodd"/><path fill="#60b24f" fill-rule="evenodd" d="M64.779 35.525c-.187-.199-.465-.365-.545-.601c-1.195-3.512-2.36-7.034-3.542-10.552a2496 2496 0 0 0-3.822-11.289c-.075-.219-.283-.392-.429-.586c1.504-1.473 2.961-2.999 4.526-4.404c1.391-1.248 2.509-2.586 2.561-4.559l.11-.393l.396.998c-.01.504-.055 1.01-.022 1.512c.057.873.198 1.742.237 2.615c.073 1.625.108 3.253.141 4.88c.053 2.618.101 5.237.133 7.856l.137 12.554c.01.657.079 1.313.119 1.969" clip-rule="evenodd"/><path fill="#a9aa88" fill-rule="evenodd" d="M62.929 82.642c.201-1.004.466-2 .59-3.015c.248-2.024.419-4.058.622-6.087l.051-.008l.05.009a31.7 31.7 0 0 0 1.065 7.516c-.135.178-.324.335-.396.535c-.555 1.566-1.079 3.145-1.637 4.71c-.076.214-.29.381-.439.568l-.571-1.96z" clip-rule="evenodd"/><path fill="#b6b598" fill-rule="evenodd" d="M62.835 86.871c.149-.188.363-.354.439-.568c.558-1.565 1.082-3.144 1.637-4.71c.071-.2.261-.357.396-.535l.959 2.104c-.189.268-.451.511-.556.81l-1.836 5.392c-.076.217-.333.369-.507.552z" clip-rule="evenodd"/><path fill="#c2c1a7" fill-rule="evenodd" d="M63.367 89.915c.173-.183.431-.335.507-.552l1.836-5.392c.104-.299.367-.542.556-.81l.928.791c-.448.443-.697.955-.547 1.602l-.282.923c-.128.158-.314.296-.377.477c-.641 1.836-1.252 3.682-1.898 5.517c-.082.232-.309.415-.468.621z" clip-rule="evenodd"/><path fill="#cecdb7" fill-rule="evenodd" d="M63.621 93.091c.16-.206.387-.389.468-.621c.646-1.835 1.258-3.681 1.898-5.517c.063-.181.249-.318.377-.477l-.389 4.236c-.104.12-.254.225-.304.364l-1.294 3.708c-.091.253-.265.479-.401.716c-.121-.158-.337-.311-.347-.475c-.038-.642-.011-1.289-.008-1.934" clip-rule="evenodd"/><path fill="#dbdac7" fill-rule="evenodd" d="M63.977 95.501c.136-.237.31-.463.401-.716l1.294-3.708c.05-.14.201-.244.304-.364l.01 2.78l-.931 2.387z" clip-rule="evenodd"/><path fill="#ebe9dc" fill-rule="evenodd" d="m65.055 95.88l.931-2.387l.192 2.824z" clip-rule="evenodd"/><path fill="#cecdb7" fill-rule="evenodd" d="M66.646 85.554c-.149-.646.099-1.158.547-1.602l.258.176z" clip-rule="evenodd"/><path fill="#4faa41" fill-rule="evenodd" d="m64.242 73.542l-.05-.009l-.051.008l.119-.427z" clip-rule="evenodd"/></svg></div>
-
-                    <!-- Git & Github -->
-                    <div class="card-bg p-4 rounded-tl-lg rounded-br-lg flex items-center justify-center font-semibold "><svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 45 16"><path fill="currentColor" d="M8.81 7.35v5.74c0 .04-.01.11-.06.13c0 0-1.25.89-3.31.89c-2.49 0-5.44-.78-5.44-5.92S2.58 1.99 5.1 2c2.18 0 3.06.49 3.2.58c.04.05.06.09.06.14L7.94 4.5c0 .09-.09.2-.2.17c-.36-.11-.9-.33-2.17-.33c-1.47 0-3.05.42-3.05 3.73s1.5 3.7 2.58 3.7c.92 0 1.25-.11 1.25-.11v-2.3H4.88c-.11 0-.19-.08-.19-.17V7.35c0-.09.08-.17.19-.17h3.74c.11 0 .19.08.19.17m35.85 2.33c0 3.43-1.11 4.41-3.05 4.41c-1.64 0-2.52-.83-2.52-.83s-.04.46-.09.52c-.03.06-.08.08-.14.08h-1.48c-.1 0-.19-.08-.19-.17l.02-11.11c0-.09.08-.17.17-.17h2.13c.09 0 .17.08.17.17v3.77s.82-.53 2.02-.53l-.01-.02c1.2 0 2.97.45 2.97 3.88M27.68 2.43c.09 0 .17.08.17.17v11.11c0 .09-.08.17-.17.17h-2.13c-.09 0-.17-.08-.17-.17l.02-4.75h-3.31v4.75c0 .09-.08.17-.17.17h-2.13c-.08 0-.17-.08-.17-.17V2.6c0-.09.08-.17.17-.17h2.13c.09 0 .17.08.17.17v4.09h3.31V2.6c0-.09.08-.17.17-.17Zm8.26 3.64c.11 0 .19.08.19.17l-.02 7.47c0 .09-.06.17-.17.17H34.6c-.07 0-.14-.04-.16-.09c-.03-.06-.08-.45-.08-.45s-1.13.77-2.52.77c-1.69 0-2.92-.55-2.92-2.75V6.25c0-.09.08-.17.17-.17h2.14c.09 0 .17.08.17.17V11c0 .75.22 1.09.97 1.09s1.3-.39 1.3-.39V6.26c0-.11.06-.19.17-.19Zm-17.406 5.971h.005a.18.18 0 0 1 .141.179v1.5c0 .07-.03.14-.09.16c-.1.05-.74.22-1.27.22c-1.16 0-2.86-.25-2.86-2.69V8.13h-1.11c-.09 0-.17-.08-.17-.19V6.58c0-.08.05-.15.13-.17c.07-.01 1.16-.28 1.16-.28V3.96c0-.08.05-.13.14-.13h2.16c.09 0 .14.05.14.13v2.11h1.59c.08 0 .16.08.16.17v1.7c0 .11-.07.19-.16.19h-1.59v3.131c0 .47.27.83 1.05.83c.247 0 .481-.049.574-.05M12.24 6.06c.09 0 .17.08.17.17v7.37c0 .18-.05.27-.25.27h-1.92c-.17 0-.3-.07-.3-.27V6.26c0-.11.08-.2.17-.2Zm29.99 3.78c0-1.81-.73-2.05-1.5-1.97c-.6.04-1.08.34-1.08.34v3.52s.49.34 1.22.36c1.03.03 1.36-.34 1.36-2.25M11.19 2.68c.75 0 1.36.61 1.36 1.38s-.61 1.38-1.36 1.38c-.77 0-1.38-.61-1.38-1.38s.61-1.38 1.38-1.38m7.34 9.35l.01.01h-.001l-.005-.001v.001c-.009-.001-.015-.011-.024-.011Z"/></svg></div>
-
-                    <!-- Salesforce Apex -->
-                    <div class="card-bg p-4 rounded-tl-lg rounded-br-lg flex items-center justify-center font-semibold "><svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 128 128"><path fill="#0d9dda" d="m110.4 63.58l-8.504-13.3h7.366l5.043 8.257l4.994-8.257h7.366l-8.504 13.3L128 77.72h-7.811l-5.884-9.394l-5.834 9.394h-7.811zm-18.096-1.928q-.296-1.632-.988-2.818t-1.681-1.929q-.99-.79-2.225-1.137q-1.187-.395-2.522-.395q-.988 0-2.175.296q-1.137.248-2.225.94t-2.027 1.928q-.89 1.186-1.335 3.115zm-14.98 5.29q.099.692.643 1.68q.544.94 1.483 1.83t2.274 1.533q1.385.593 3.164.593q4.4 0 6.329-3.51h6.921q-.593 1.878-1.829 3.609q-1.236 1.68-2.966 3.016t-3.906 2.125q-2.126.792-4.549.792q-3.114 0-5.784-1.138t-4.598-3.114t-3.016-4.598q-1.088-2.67-1.088-5.686q0-2.917 1.039-5.587t2.917-4.696q1.878-2.027 4.548-3.214q2.67-1.236 5.933-1.236q3.362 0 5.982 1.285q2.67 1.236 4.45 3.264q1.83 2.027 2.768 4.597q.99 2.571.99 5.142q0 .989-.15 1.83q-.098.79-.246 1.483zm-32.58-2.967q0 2.275.79 3.906q.84 1.632 2.027 2.67q1.236 1.038 2.62 1.532t2.571.495q1.335 0 2.72-.544q1.433-.544 2.57-1.632q1.187-1.087 1.929-2.67q.79-1.63.79-3.757q0-1.878-.691-3.46q-.643-1.583-1.78-2.72q-1.088-1.137-2.522-1.78q-1.384-.642-2.917-.642t-3.016.593q-1.433.593-2.57 1.73q-1.138 1.088-1.83 2.72q-.692 1.582-.692 3.56zm-6.18-13.695h6.03v3.214h.1q1.236-1.533 2.57-2.373q1.385-.89 2.62-1.236q1.237-.396 2.226-.445q.988-.099 1.483-.099q3.362 0 5.933 1.335q2.57 1.285 4.301 3.411q1.73 2.077 2.62 4.697q.89 2.571.89 5.092q0 3.066-1.087 5.735q-1.039 2.67-2.917 4.697q-1.83 1.978-4.351 3.164q-2.472 1.138-5.39 1.138q-1.73 0-3.064-.347q-1.286-.296-2.275-.79t-1.73-1.138t-1.384-1.236v11.767h-6.576zM13.644 61.9h8.405l-4.153-11.223h-.099zm1.582-20.765h5.29L35.845 77.72h-7.466l-3.905-9.443H11.37L7.465 77.72H0z"/></svg></div>
-
-                    <!-- Salesforce -->
-                    <div class="card-bg p-4 rounded-tl-lg rounded-br-lg flex items-center justify-center font-semibold"><svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 256 180"><path fill="#00a1e0" d="M106.553 19.651c8.248-8.594 19.731-13.924 32.43-13.924c16.883 0 31.612 9.414 39.455 23.389a54.5 54.5 0 0 1 22.3-4.74c30.449 0 55.134 24.9 55.134 55.615c0 30.719-24.685 55.62-55.134 55.62a54.7 54.7 0 0 1-10.86-1.083c-6.908 12.321-20.07 20.645-35.178 20.645a40.1 40.1 0 0 1-17.632-4.058c-7.002 16.47-23.316 28.019-42.33 28.019c-19.8 0-36.674-12.529-43.152-30.1c-2.83.602-5.763.915-8.772.915c-23.574 0-42.686-19.308-42.686-43.13a43.2 43.2 0 0 1 21.345-37.36a49.4 49.4 0 0 1-4.088-19.727C17.385 22.336 39.626.128 67.06.128c16.106 0 30.42 7.658 39.494 19.523"/><path fill="#fff" d="M37.17 92.956c-.16.419.058.506.11.58c.48.349.968.6 1.46.88c2.609 1.385 5.071 1.79 7.647 1.79c5.246 0 8.503-2.79 8.503-7.283v-.087c0-4.153-3.676-5.662-7.126-6.75l-.448-.147c-2.601-.845-4.845-1.573-4.845-3.286v-.09c0-1.465 1.311-2.544 3.344-2.544c2.259 0 4.94.75 6.667 1.705c0 0 .506.328.692-.164c.102-.262.976-2.615 1.068-2.87c.098-.277-.077-.481-.255-.59c-1.971-1.2-4.696-2.019-7.516-2.019l-.525.004c-4.801 0-8.153 2.9-8.153 7.057v.087c0 4.383 3.698 5.803 7.162 6.794l.558.172c2.524.775 4.7 1.442 4.7 3.22v.087c0 1.625-1.414 2.835-3.695 2.835c-.885 0-3.708-.018-6.758-1.946c-.368-.215-.583-.371-.867-.542c-.15-.095-.524-.26-.688.236zm76.8 0c-.16.419.058.506.11.58c.48.349.968.6 1.46.88c2.608 1.385 5.071 1.79 7.647 1.79c5.246 0 8.503-2.79 8.503-7.283v-.087c0-4.153-3.676-5.662-7.126-6.75l-.448-.147c-2.601-.845-4.846-1.573-4.846-3.286v-.09c0-1.465 1.312-2.544 3.345-2.544c2.259 0 4.94.75 6.667 1.705c0 0 .506.328.692-.164c.102-.262.976-2.615 1.067-2.87c.099-.277-.076-.481-.255-.59c-1.97-1.2-4.696-2.019-7.515-2.019l-.525.004c-4.802 0-8.153 2.9-8.153 7.057v.087c0 4.383 3.697 5.803 7.162 6.794l.557.172c2.525.775 4.704 1.442 4.704 3.22v.087c0 1.625-1.418 2.835-3.698 2.835a12.4 12.4 0 0 1-6.758-1.946c-.368-.215-.587-.364-.863-.542c-.095-.062-.54-.234-.693.236zm52.429-8.799c0 2.54-.474 4.54-1.406 5.953c-.922 1.4-2.317 2.08-4.263 2.08c-1.949 0-3.337-.677-4.244-2.08c-.918-1.41-1.384-3.413-1.384-5.953c0-2.535.466-4.532 1.384-5.93c.907-1.385 2.295-2.059 4.244-2.059c1.946 0 3.34.674 4.266 2.058c.93 1.4 1.403 3.396 1.403 5.931m4.379-4.707c-.43-1.453-1.1-2.735-1.993-3.803c-.893-1.071-2.022-1.93-3.363-2.557c-1.337-.623-2.918-.94-4.692-.94c-1.778 0-3.359.317-4.696.94c-1.34.626-2.47 1.486-3.366 2.557c-.889 1.071-1.56 2.354-1.993 3.803c-.426 1.447-.64 3.028-.64 4.707c0 1.68.214 3.265.64 4.707c.434 1.45 1.1 2.732 1.997 3.804a9.4 9.4 0 0 0 3.362 2.535c1.34.609 2.918.918 4.696.918c1.774 0 3.352-.31 4.692-.918a9.4 9.4 0 0 0 3.363-2.535c.893-1.068 1.563-2.35 1.993-3.804c.43-1.446.645-3.03.645-4.707c0-1.675-.215-3.26-.645-4.707m35.959 12.063c-.145-.426-.557-.266-.557-.266c-.637.244-1.315.47-2.036.583a16 16 0 0 1-2.401.171c-2.12 0-3.804-.63-5.01-1.876c-1.209-1.246-1.887-3.26-1.88-5.986c.008-2.48.606-4.346 1.68-5.767c1.068-1.413 2.692-2.138 4.86-2.138c1.807 0 3.184.207 4.627.663c0 0 .346.15.51-.303c.382-1.063.667-1.825 1.075-2.994c.116-.332-.168-.474-.27-.514c-.568-.222-1.909-.583-2.922-.736c-.947-.145-2.054-.222-3.286-.222c-1.84 0-3.479.313-4.882.94c-1.399.623-2.586 1.483-3.526 2.554s-1.654 2.353-2.131 3.803c-.474 1.446-.714 3.035-.714 4.714c0 3.632.98 6.569 2.914 8.718c1.938 2.157 4.85 3.253 8.645 3.253c2.244 0 4.547-.455 6.2-1.107c0 0 .318-.153.18-.521zm7.663-9.788c.207-1.41.597-2.583 1.198-3.497c.907-1.388 2.291-2.15 4.237-2.15c1.945 0 3.231.765 4.153 2.15c.612.914.878 2.138.983 3.497zm14.743-3.1c-.372-1.403-1.294-2.82-1.898-3.468c-.955-1.028-1.887-1.746-2.813-2.146a10.8 10.8 0 0 0-4.248-.86c-1.85 0-3.53.31-4.892.95c-1.366.642-2.514 1.516-3.414 2.606c-.9 1.085-1.577 2.379-2.007 3.847c-.434 1.46-.652 3.053-.652 4.732c0 1.709.226 3.3.674 4.732c.451 1.443 1.173 2.715 2.15 3.767c.972 1.06 2.225 1.891 3.726 2.47c1.49.576 3.3.875 5.38.871c4.281-.015 6.537-.969 7.465-1.483c.164-.09.321-.251.124-.71l-.969-2.714c-.145-.405-.557-.255-.557-.255c-1.06.393-2.568 1.1-6.084 1.093c-2.299-.004-4.004-.682-5.071-1.742c-1.097-1.085-1.632-2.68-1.727-4.932l14.824.014s.39-.007.43-.386c.014-.16.51-3.046-.441-6.386m-133.46 3.1c.211-1.41.597-2.583 1.199-3.497c.907-1.388 2.291-2.15 4.236-2.15c1.946 0 3.232.765 4.157 2.15c.609.914.875 2.138.98 3.497zm14.74-3.1c-.372-1.403-1.29-2.82-1.895-3.468c-.954-1.028-1.887-1.746-2.812-2.146a10.8 10.8 0 0 0-4.248-.86c-1.847 0-3.53.31-4.892.95c-1.367.642-2.514 1.516-3.414 2.606c-.9 1.085-1.577 2.379-2.007 3.847c-.43 1.46-.652 3.053-.652 4.732c0 1.709.225 3.3.674 4.732c.451 1.443 1.173 2.715 2.149 3.767c.973 1.06 2.226 1.891 3.727 2.47c1.49.576 3.3.875 5.38.871c4.281-.015 6.536-.969 7.465-1.483c.164-.09.32-.251.124-.71l-.965-2.714c-.15-.405-.561-.255-.561-.255c-1.06.393-2.565 1.1-6.088 1.093c-2.295-.004-4-.682-5.067-1.742c-1.097-1.085-1.633-2.68-1.727-4.932l14.823.014s.39-.007.43-.386c.015-.16.51-3.046-.444-6.386M63.642 91.431c-.58-.462-.66-.579-.856-.878c-.292-.455-.441-1.104-.441-1.927c0-1.304.43-2.24 1.322-2.87c-.01.003 1.275-1.112 4.3-1.072c2.123.03 4.021.343 4.021.343v6.74h.004s-1.884.404-4.004.531c-3.017.182-4.357-.87-4.346-.867m5.898-10.415c-.601-.044-1.38-.07-2.313-.07c-1.272 0-2.5.16-3.65.47a9.5 9.5 0 0 0-3.097 1.436a7.15 7.15 0 0 0-2.15 2.444c-.524.977-.79 2.128-.79 3.417c0 1.312.225 2.452.677 3.385a6.1 6.1 0 0 0 1.935 2.317c.823.601 1.84 1.042 3.02 1.308c1.162.266 2.48.4 3.923.4c1.52 0 3.035-.123 4.503-.375a94 94 0 0 0 3.734-.721c.492-.117 1.039-.266 1.039-.266c.368-.091.338-.485.338-.485l-.007-13.555c0-2.973-.794-5.177-2.357-6.543c-1.555-1.363-3.847-2.051-6.809-2.051c-1.11 0-2.9.153-3.97.368c0 0-3.24.626-4.573 1.668c0 0-.291.182-.131.59l1.05 2.82c.13.364.484.24.484.24s.113-.043.244-.12c2.852-1.552 6.459-1.504 6.459-1.504c1.603 0 2.834.32 3.665.958c.809.619 1.22 1.555 1.22 3.53v.626c-1.275-.182-2.444-.287-2.444-.287m119.56-7.639a.4.4 0 0 0-.223-.532c-.251-.098-1.512-.364-2.485-.426c-1.861-.113-2.896.2-3.821.616c-.918.415-1.938 1.085-2.507 1.847v-1.804c0-.251-.178-.451-.426-.451h-3.8c-.247 0-.426.2-.426.451v22.11c0 .248.204.452.452.452h3.894a.45.45 0 0 0 .448-.452V84.142c0-1.482.164-2.962.492-3.89c.32-.919.758-1.654 1.297-2.183a4.55 4.55 0 0 1 1.833-1.1c.688-.211 1.45-.28 1.989-.28c.776 0 1.628.2 1.628.2c.284.033.445-.142.54-.4c.254-.678.976-2.708 1.114-3.112"/><path fill="#fff" d="M152.544 63.13a13 13 0 0 0-1.465-.35a11.6 11.6 0 0 0-2.014-.152c-2.682 0-4.795.757-6.277 2.251c-1.476 1.486-2.478 3.749-2.98 6.725l-.183 1.002h-3.366s-.408-.015-.495.43l-.55 3.086c-.04.291.087.477.48.477h3.276l-3.323 18.55c-.258 1.494-.557 2.722-.889 3.654c-.324.918-.64 1.607-1.034 2.11c-.38.48-.736.838-1.356 1.045c-.51.172-1.1.252-1.745.252c-.357 0-.834-.059-1.187-.131a3.5 3.5 0 0 1-.802-.26s-.382-.145-.535.238c-.12.317-.995 2.717-1.1 3.013c-.102.295.043.524.229.593c.437.153.761.255 1.355.397c.824.194 1.52.204 2.172.204c1.362 0 2.608-.193 3.639-.564c1.035-.375 1.938-1.028 2.74-1.91c.863-.954 1.406-1.952 1.923-3.318c.514-1.348.955-3.024 1.304-4.976l3.341-18.897h4.882s.411.014.495-.434l.554-3.082c.036-.295-.087-.477-.485-.477h-4.74c.026-.106.241-1.774.784-3.344c.233-.667.67-1.21 1.038-1.581a3.1 3.1 0 0 1 1.243-.773c.47-.153 1.005-.226 1.592-.226c.444 0 .885.051 1.216.12c.46.099.638.15.758.186c.485.146.55.004.645-.23l1.133-3.11c.117-.335-.171-.478-.273-.518M86.322 95.19c0 .247-.179.448-.426.448h-3.931c-.248 0-.423-.2-.423-.448V63.553c0-.247.175-.448.423-.448h3.93c.248 0 .427.2.427.448z"/></svg></div>
-                </div>
-            </section>
-
-            <section id="experience" class="py-20 md:py-32">
-                <h3 class="text-3xl md:text-4xl font-bold text-center">Work Experience</h3>
-                <p class="text-center text-stone-400 mt-2 mb-12">My professional journey so far.</p>
-                <div class="max-w-3xl mx-auto space-y-12 relative">
-                    <div class="absolute left-4 top-0 h-full w-0.5 bg-stone-700"></div>
-                    <!-- Experience Item 1 -->
-                    <div class="relative pl-12">
-                        <div class="absolute left-4 top-1 w-4 h-4 bg-amber-500 rounded-full -translate-x-[7px]"></div>
-                        <h4 class="text-xl font-semibold text-amber-400">Salesforce Developer intern</h4>
-                        <p class="text-stone-400">SaasGuru | Mar 2024 - July 2024</p>
-                        <p class="mt-2 text-stone-300">
-                            BrEngineered a Formula 1 Points Calculator App using Apex, which automated race result processing and boosted user efficiency by 30%. To achieve this, I developed custom objects, fields, and Apex Triggers for dynamic leaderboard management and designed real-time dashboards for instant standings visualization. The project workflow was streamlined through Jira integration for effective sprint management.
-                        </p>
+            <section id="contact" class="py-20">
+                <div class="max-w-4xl mx-auto card-bg p-10 rounded-3xl border border-stone-800">
+                    <div class="text-center mb-10">
+                        <h3 class="text-3xl font-bold">Let's Build Something Great</h3>
+                        <p class="text-stone-400 mt-2">Ready for your next Salesforce implementation or Web project.</p>
                     </div>
-                    <!-- Experience Item 2 -->
-                    <div class="relative pl-12">
-                        <div class="absolute left-4 top-1 w-4 h-4 bg-amber-500 rounded-full -translate-x-[7px]"></div>
-                        <h4 class="text-xl font-semibold text-amber-400">Frontend Devloper intern</h4>
-                        <p class="text-stone-400">Corizo.in | jun 2023 - aug 2023</p>
-                        <p class="mt-2 text-stone-300">
-                            As a Frontend Developer Intern, I engineered and launched a new interactive product showcase for the main e-commerce platform. I built the component from the ground up using HTML, CSS, and JavaScript, focusing on creating a fully responsive and accessible user experience. A key part of the project was refactoring legacy code and implementing modern WAI-ARIA standards, which made the feature fully navigable via keyboard. My optimizations resulted in a 40% faster component load time and contributed to a 15% increase in user engagement.
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <section id="education" class="py-20 md:py-32">
-                <h3 class="text-3xl md:text-4xl font-bold text-center">Education</h3>
-                <p class="text-center text-stone-400 mt-2 mb-12">Where I've learned and grown.</p>
-                <div class="max-w-3xl mx-auto space-y-12 relative">
-                    <div class="absolute left-4 top-0 h-full w-0.5 bg-stone-700"></div>
-                    <!-- Education Item 1 -->
-                    <div class="relative pl-12">
-                        <div class="absolute left-4 top-1 w-4 h-4 bg-amber-500 rounded-full -translate-x-[7px]"></div>
-                        <h4 class="text-xl font-semibold text-amber-400">Bachelor in Computer Science and Technology</h4>
-                        <p class="text-stone-400"> National Institute of Science and Technology | 2021 - 2024</p>
-                        <p class="mt-2 text-stone-300">
-                            Completed a Bachelor of Technology in Computer Science & Technology, establishing a strong foundation in core principles like Data Structures, Algorithms, and Object-Oriented Programming. The curriculum provided in-depth knowledge of software development, database management, and computer networks. I gained practical, hands-on experience through projects focused on web development, machine learning, and system design, which honed my problem-solving skills and my ability to build robust, scalable applications..
-                        </p>
-                    </div>
-                    <div class="relative pl-12">
-                        <div class="absolute left-4 top-1 w-4 h-4 bg-amber-500 rounded-full -translate-x-[7px]"></div>
-                        <h4 class="text-xl font-semibold text-amber-400">Diploma in Electronics Telecommunication Engineering</h4>
-                        <p class="text-stone-400"> Bharat Institute of Engineering and Technology | 2018 - 2021</p>
-                        <p class="mt-2 text-stone-300">
-                            Completed a Diploma in Electronics & Telecommunication Engineering, building a strong practical skill set in core hardware and communication principles. The curriculum focused on analog and digital electronics, radio frequency systems, and microprocessor architecture. I developed hands-on proficiency in circuit design, PCB layout, and troubleshooting complex electronic equipment, providing a solid foundation for bridging the gap between hardware infrastructure and software development.
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <section id="photography" class="py-20 md:py-32">
-                 <h3 class="text-3xl md:text-4xl font-bold text-center">Photography</h3>
-                <p class="text-center text-stone-400 mt-2 mb-12">Moments I've captured.</p>
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
-                    <div class='overflow-hidden rounded-lg aspect-w-1 aspect-h-1'><iframe id='iframe' src='https://lightroom.adobe.com/embed/shares/5c653e42f104458bbefc4e6f7dd94b27/slideshow?background_color=%232D2D2D&color=%23999999' class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" alt="Photography example 2" ></iframe></div>
-                    <div class='overflow-hidden rounded-lg aspect-w-1 aspect-h-1' ><iframe id='iframe' src='https://lightroom.adobe.com/embed/shares/6e69a78931a14f05bd00929c646369e3/slideshow?background_color=%232D2D2D&color=%23999999' class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" alt="Photography example 3" ></iframe></div>
-                    <div class='overflow-hidden rounded-lg aspect-w-1 aspect-h-1'><iframe id='iframe' src='https://lightroom.adobe.com/embed/shares/381fe30e4bd544deb2b5bf96beff51bc/slideshow?background_color=%232D2D2D&color=%23999999' class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" alt="Photography example 4" ></iframe></div>
-                    <!-- <div class='overflow-hidden rounded-lg aspect-w-1 aspect-h-1'><iframe id='iframe' src='https://lightroom.adobe.com/embed/shares/fe6cd62fff264854ad30e449a4450ec7/slideshow?background_color=%232D2D2D&color=%23999999' class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" alt="Photography example 5"></iframe></div> -->
-                    <div class='overflow-hidden rounded-lg aspect-w-1 aspect-h-1'><iframe id='iframe' src='https://lightroom.adobe.com/embed/shares/74344bf493234a5380482103d8cbcbf3/slideshow?background_color=%232D2D2D&color=%23999999' class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" alt="Photography example 6" ></iframe></div>
-                    <div class='overflow-hidden rounded-lg aspect-w-1 aspect-h-1'><iframe id='iframe' src='https://lightroom.adobe.com/embed/shares/0de777df1ef0420aa7f7b45f3265a540/slideshow?background_color=%232D2D2D&color=%23999999' class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" alt="Photography example 7" ></iframe></div>
-                    <div class='overflow-hidden rounded-lg aspect-w-1 aspect-h-1'><iframe id='iframe' src='https://lightroom.adobe.com/embed/shares/2760de755cac495ba8db993d8064a7bc/slideshow?background_color=%232D2D2D&color=%23999999' class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300" alt="Photography example 8"></iframe></div>
-                </div>
-            </section>
-
-            <section id="contact" class="py-20 md:py-32">
-                <h3 class="text-3xl md:text-4xl font-bold text-center">Get In Touch</h3>
-                <p class="text-center text-stone-400 mt-2 mb-12">Have a question or want to work together?</p>
-                <div class="max-w-2xl mx-auto card-bg p-8 rounded-xl">
-                    <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                    <form id="contact-form" action="https://api.web3forms.com/submit" method="POST"
+                        class="grid md:grid-cols-2 gap-6">
                         <input type="hidden" name="access_key" value="f1c17514-99df-4423-b0ae-60d72451e61d">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label for="name" class="block text-sm font-medium text-stone-300 mb-2">Name</label>
-                                <input type="text" name="name" id="name" required class="w-full bg-stone-900/50 border border-stone-700 rounded-lg p-3 focus:ring-amber-500 focus:border-amber-500 transition">
-                            </div>
-                            <div>
-                                <label for="email" class="block text-sm font-medium text-stone-300 mb-2">Email</label>
-                                <input type="email" name="email" id="email" required class="w-full bg-stone-900/50 border border-stone-700 rounded-lg p-3 focus:ring-amber-500 focus:border-amber-500 transition">
-                            </div>
-                        </div>
-                        <div class="mt-6">
-                            <label for="message" class="block text-sm font-medium text-stone-300 mb-2">Message</label>
-                            <textarea name="message" id="message" rows="4" required class="w-full bg-stone-900/50 border border-stone-700 rounded-lg p-3 focus:ring-amber-500 focus:border-amber-500 transition"></textarea>
-                        </div>
-                        <div class="mt-8 text-center">
-                            <button type="submit" class="bg-amber-500 hover:bg-amber-600 text-white font-semibold py-3 px-8 rounded-lg transition-transform transform hover:scale-105 shadow-lg shadow-amber-500/20">
-                                Send Message
-                            </button>
-                        </div>
+                        <input type="text" name="name" placeholder="Name" required
+                            class="bg-stone-900 border border-stone-800 rounded-xl p-4 outline-none focus:border-amber-500 transition">
+                        <input type="email" name="email" placeholder="Email" required
+                            class="bg-stone-900 border border-stone-800 rounded-xl p-4 outline-none focus:border-amber-500 transition">
+                        <textarea name="message" placeholder="Your Message"
+                            class="md:col-span-2 bg-stone-900 border border-stone-800 rounded-xl p-4 h-32 outline-none focus:border-amber-500 transition"></textarea>
+                        <button type="submit"
+                            class="md:col-span-2 bg-amber-500 text-stone-900 font-bold py-4 rounded-xl hover:scale-[1.02] transition-transform">Send
+                            Message</button>
                     </form>
-                    <!-- This is the new div for showing form status -->
-                    <div id="form-result" class="mt-4 text-center font-medium"></div>
+                    <div id="form-result" class="mt-4 text-center"></div>
                 </div>
             </section>
         </main>
 
-        <footer class="text-center py-8 text-stone-500 border-t border-stone-800 bg-stone-900/30 backdrop-blur-md ">
-            <div class="mb-4 flex justify-center gap-6">
-                <a href="linkedin.com/in/ram-prasad-majhi-f18075003040" target="_blank" class="hover:text-amber-400 transition-colors">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd"/></svg>
-                </a>
-                <a href="https://x.com/me_ram_prasad" target="_blank" class="hover:text-amber-400 transition-colors">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                </a>
-                <a href="https://www.instagram.com/its_snap_tales/" target="_blank" class="hover:text-amber-400 transition-colors">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.012-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.345 2.525c.636-.247 1.363-.416 2.427-.465C9.793 2.013 10.148 2 12.315 2zm-1.161 2.895a6.412 6.412 0 00-6.41 6.41c0 3.542 2.868 6.41 6.41 6.41s6.41-2.868 6.41-6.41c0-3.542-2.868-6.41-6.41-6.41zM12 15.562a3.562 3.562 0 110-7.124 3.562 3.562 0 010 7.124zM16.848 7.272a1.423 1.423 0 110-2.845 1.423 1.423 0 010 2.845z" clip-rule="evenodd" /></svg>
-                </a>
+        <footer class="py-12 border-t border-stone-900 bg-stone-950/50 text-center">
+            <div class="flex justify-center gap-8 mb-6">
+                <a href="https://github.com/i-ram-prasad"
+                    class="text-stone-500 hover:text-white transition-colors">GitHub</a>
+                <a href="https://www.linkedin.com/in/ram-prasad-majhi-f18075003040/"
+                    class="text-stone-500 hover:text-white transition-colors">LinkedIn</a>
+                <a href="https://www.salesforce.com/trailblazer/ram-prasad-majhi"
+                    class="text-stone-500 hover:text-sky-400 transition-colors">Trailhead</a>
             </div>
-            <p>Made with ❤️ by <a href="https://github.com/i-ram-prasad" class="hover:text-amber-400 transition-colors">Ram Prasad .</a></p>
+            <p class="text-stone-600 text-sm">© 2025 Ram Prasad 🙈 .</p>
         </footer>
     </div>
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
     <script src="./script.js"></script>
 </body>
-</html>
 
+</html>
