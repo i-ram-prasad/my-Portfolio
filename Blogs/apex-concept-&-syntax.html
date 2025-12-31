@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post | Cloud Chronicles</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Fira+Code&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" href="../assets/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0c0a09;
+            color: #e7e5e4;
+        }
+
+        .content-area p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            color: #a8a29e;
+        }
+
+        .content-area h2 {
+            color: #f59e0b;
+            font-weight: 700;
+            font-size: 1.875rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        code {
+            font-family: 'Fira Code', monospace;
+            background: #1c1917;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            color: #fbbf24;
+        }
+
+        pre {
+            background: #1c1917;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            overflow-x: auto;
+            border: 1px solid #292524;
+            margin: 2rem 0;
+        }
+
+        .hl-green {
+            background: rgba(74, 222, 128, 0.2);
+            color: #4ade80;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .hl-blue {
+            background: rgba(59, 130, 246, 0.3);
+            color: #60a5fa;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .hl-cyan {
+            background: rgba(6, 182, 212, 0.3);
+            color: #22d3ee;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .hl-amber {
+            background: rgba(245, 158, 11, 0.3);
+            color: #fbbf24;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .hl-orange {
+            background: rgba(249, 115, 22, 0.2);
+            color: #fb923c;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        ::selection {
+            background-color: #f59e0b;
+            /* Amber 500 color value */
+            color: #0c0a09;
+            /* Stone 950 background for high contrast */
+        }
+
+        /* For older versions of Firefox */
+        ::-moz-selection {
+            background-color: #f59e0b;
+            /* */
+            color: #0c0a09;
+            /* */
+        }
+    </style>
+</head>
+
+<body>
+
+    <header
+        class="p-6 border-b border-stone-800 flex justify-between items-center sticky top-0 bg-stone-950/80 backdrop-blur-md z-50">
+        <a href="index.html" class="text-amber-500 font-bold text-xl">Cloud Chronicles</a>
+        <a href="index.html" class="text-stone-400 hover:text-white transition-all text-sm">← All Chapters</a>
+    </header>
+
+    <main class="container mx-auto px-6 py-16 max-w-3xl">
+        <header class="mb-12">
+            <div class="flex items-center gap-4 mb-4 text-sm font-mono text-stone-500 uppercase">
+                <span>Chapter 01</span>
+                <span>•</span>
+                <span>December 31, 2025</span>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight">
+                Apex Concept & Syntax
+            </h1>
+        </header>
+
+        <section class="content-area">
+
+            <p>
+                Starting a Salesforce build from the beginning requires a solid foundation in Apex. Think of Apex as the
+                'brain' behind your custom objects and buttons. In this post, I am stripping away the complexity to look
+                at the basic syntax, data types, and control structures that every Salesforce developer needs to know to
+                build robust applications.
+            </p>
+
+            <h3>Version Settings</h3>
+
+            <ul class="list-disc list-inside space-y-3 text-stone-400 mb-8">
+                <li class="hover:text-amber-500 transition-colors">
+                    Define your API version and your apex class will run based on the version defined even if newer api
+                    version are released.
+                </li>
+                <li class="hover:text-amber-500 transition-colors">
+                    You cannot have one name for two different classes or triggers.
+                </li>
+            </ul>
+
+            <p>
+                if a class is runing on API version 58 and another class running on 63,65 then <mark
+                    class="bg-amber-500/20 text-amber-500 px-1 rounded ">still it will work</mark>
+            </p>
+
+            <h3>Statement:</h3>
+
+            <ul class="list-disc list-inside space-y-3 text-stone-400 mb-8">
+                <li>A coded instruction that ends with a semicolon and performs a specific action .</li>
+            </ul>
+
+
+
+            <!-- <p>
+                Explain your process in detail. If you want to highlight a specific term, you can wrap it in a code tag
+                like this: <code>Lightning Web Components</code>.
+            </p> -->
+
+            <pre><code>
+// Example Salesforce Apex
+Integer i = 0; //its a statement
+
+if(i != 0){} //its not a statement
+            </code></pre>
+
+            <h3>Blocks:</h3>
+
+            <ul class="list-disc list-inside space-y-3 text-stone-400 mb-8">
+                <li>A set of statements put together surrounded by curly braces.
+                    Example : ( ), { }, [ ], <>
+
+                </li>
+            </ul>
+
+            <h2>Concept 1: Access Modifiers</h2>
+            <section class="my-12">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+
+                    <div>
+                        <p class="text-sm text-stone-500 mb-4 italic uppercase tracking-widest">Website</p>
+                        <h3 class="mb-6">
+                            <span
+                                class="bg-blue-500/20 text-blue-400 px-3 py-1 rounded font-bold text-2xl">global</span>
+                        </h3>
+                        <p class="text-stone-400 text-sm leading-relaxed">
+                            Accessible to the <span class="bg-green-500/20 text-green-400 px-1 rounded">entire
+                                org</span>,<br>
+                            accessible <span class="bg-green-500/20 text-green-400 px-1 rounded">everywhere</span>
+                        </p>
+                    </div>
+
+                    <div>
+                        <p class="text-sm text-stone-500 mb-4 italic uppercase tracking-widest">Bulletin board</p>
+                        <h3 class="mb-6">
+                            <span
+                                class="bg-cyan-500/20 text-cyan-400 px-3 py-1 rounded font-bold text-2xl">public</span>
+                        </h3>
+                        <p class="text-stone-400 text-sm leading-relaxed">
+                            Accessible within the <span
+                                class="bg-green-500/20 text-green-400 px-1 rounded">application</span> and<br>
+                            <span class="bg-green-500/20 text-green-400 px-1 rounded">namespace</span>
+                        </p>
+                    </div>
+
+                    <div>
+                        <p class="text-sm text-stone-500 mb-4 italic uppercase tracking-widest">Journal</p>
+                        <h3 class="mb-6">
+                            <span
+                                class="bg-amber-500/20 text-amber-500 px-3 py-1 rounded font-bold text-2xl">private</span>
+                        </h3>
+                        <p class="text-stone-400 text-sm leading-relaxed">
+                            Accessible only within the <span class="bg-green-500/20 text-green-400 px-1 rounded">section
+                                of code</span>,<br>
+                            default access for <span class="bg-green-500/20 text-green-400 px-1 rounded">inner classes
+                                is private</span>
+                        </p>
+                    </div>
+
+                </div>
+            </section>
+
+            <div class="my-8 border-l-4 border-amber-500 bg-stone-900/50 p-6 rounded-r-2xl">
+                <h4 class="flex items-center gap-2 text-amber-500 font-bold mb-2">
+                    <span>💡</span> Note:
+                </h4>
+                <p class="text-stone-400 text-sm leading-relaxed m-0">
+                    remember that if i didnt use any access modifier for apex then it will take only <code
+                        class="text-amber-300">private</code>
+                </p>
+            </div>
+
+            <h2>Concept 2: Class Variable</h2>
+
+            <h3>Variables & Keywords </h3>
+            <div class="text-center my-12">
+                <h2 class="text-3xl md:text-4xl italic font-light text-stone-400">
+                    To make the right dish, <span class="text-green-400 font-bold not-italic">Variables</span> are the
+                    <span class="text-white italic">ingredients</span>,
+                    <br class="hidden md:block">
+                    where as <span class="text-green-400 font-bold not-italic">methods</span> are the <span
+                        class="text-white italic">steps</span>
+                </h2>
+            </div>
+
+            <ul class="list-disc list-outside ml-6 space-y-4 text-stone-300 mb-16">
+                <li>Variables have to be declared with the <span class="hl-green">data type</span>
+                    <ul class="list-circle ml-6 mt-2">
+                        <li class="text-stone-400"><span class="text-green-400 font-bold">Data type</span> is nothing
+                            but its represent the kind of data that you want to store in variable.</li>
+                    </ul>
+                </li>
+                <li>Data types can be <span class="hl-green">primitive</span> like Date, Integer, Boolean, etc or can be
+                    <span class="hl-green">advanced</span> like List, Set, Map, sObject.
+                </li>
+                <li><span class="hl-green">Semicolon</span> at the end is mandatory when declaring a variable.</li>
+                <li>Optionally, they can have the <span class="hl-green">access modifier</span> and the value assigned
+                    to them as well.</li>
+                <li>Keywords are <span class="hl-green">reserved</span> by the <span class="hl-green">system</span> and
+                    cannot be used to <span class="hl-green">name variables</span>.
+                    <ul class="list-circle ml-6 mt-2">
+                        <li class="text-stone-400">Example: new, Integer, System, List, etc.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="my-20">
+                <h2 class="text-4xl font-extrabold text-white mb-8">Concept 3 - Class Methods</h2>
+
+                <p class="text-stone-400 mb-6">Methods need to have a:</p>
+                <ul class="list-disc ml-8 space-y-2 mb-10 text-stone-200">
+                    <li>Method Name</li>
+                    <li>Method Parameters</li>
+                    <li>Method Return type</li>
+                    <li>Method Access Modifier (optional)</li>
+                </ul>
+
+                <p class="mb-4">Method can be <span class="hl-orange">Polymorphic</span> too</p>
+                <ul class="list-circle ml-8 space-y-4 text-stone-400">
+                    <li><span class="text-amber-400 font-bold">Polymorphic:</span> A single method can exist in <span
+                            class="hl-green">one or more versions</span>.</li>
+                    <li>It allows the <span class="font-bold text-white">same method name</span> to work <span
+                            class="italic text-white">differently</span>.</li>
+                    <li>It is one of the four core 📁 <span class="text-sky-400 font-bold uppercase">OOPS</span>
+                        concepts.</li>
+                </ul>
+
+                <div class="mt-12 p-8 bg-stone-900/30 rounded-3xl border border-stone-800">
+                    <h4 class="text-white font-bold mb-4 uppercase tracking-widest text-xs">Use Cases</h4>
+                    <p class="text-stone-500 text-sm leading-loose">
+                        generate random password, Convert currencies, Send alerts, update database, retrieve
+                        information, assign permissions, create records, validate logic, etc.
+                    </p>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+            <h2>Conclusion</h2>
+            <p>
+                Wrap up your thoughts and tell the reader what you plan to build next. This is a great way to keep
+                people interested in your journey.
+            </p>
+
+
+
+
+        </section>
+
+        <footer class="mt-20 pt-10 border-t border-stone-800 flex flex-col items-center">
+            <p class="text-stone-500 italic mb-6">Thanks for reading!</p>
+            <a href="../index.html"
+                class="bg-amber-500 text-stone-900 px-8 py-3 rounded-full font-bold hover:scale-105 transition-transform">
+                Back to Portfolio
+            </a>
+        </footer>
+    </main>
+
+</body>
+
+</html>
