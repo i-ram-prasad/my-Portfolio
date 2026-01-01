@@ -11,6 +11,12 @@
     <link rel="icon" type="image/png" href="../assets/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-twilight.min.css" rel="stylesheet" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
+
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -49,6 +55,7 @@
             margin: 2rem 0;
         }
 
+        /* Color-coded highlights from your references */
         .hl-green {
             background: rgba(74, 222, 128, 0.2);
             color: #4ade80;
@@ -87,6 +94,15 @@
             border-radius: 4px;
         }
 
+        .hl-red {
+            background: rgba(239, 68, 68, 0.2);
+            color: #f87171;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        /*Just only for selection line heighlight colour f59e0b */
+
         ::selection {
             background-color: #f59e0b;
             /* Amber 500 color value */
@@ -100,6 +116,39 @@
             /* */
             color: #0c0a09;
             /* */
+        }
+
+        .truth-table {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.875rem;
+            color: #d6d3d1;
+        }
+
+        .truth-row {
+            display: grid;
+            grid-template-columns: 80px 80px 150px;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /*Code snipet only */
+
+        /* Force Prism background to match your Stone theme */
+        pre[class*="language-"] {
+            background: #1c1917 !important;
+            /* Stone 900 */
+            border: 1px solid #292524 !important;
+            /* Stone 800 */
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        /* Make keywords amber to match your site */
+        .token.keyword,
+        .token.class-name {
+            color: #f59e0b !important;
+            /* Amber 500 */
         }
     </style>
 </head>
@@ -163,7 +212,7 @@
                 like this: <code>Lightning Web Components</code>.
             </p> -->
 
-            <pre><code>
+            <pre><code class="language-java">
 // Example Salesforce Apex
 Integer i = 0; //its a statement
 
@@ -299,6 +348,203 @@ if(i != 0){} //its not a statement
                     </p>
                 </div>
             </div>
+
+            <section class="my-20">
+                <h2 class="text-4xl font-extrabold text-white mb-8 ">Concept 4 -
+                    Constructors :-</h2>
+
+                <ul class="list-disc list-outside ml-6 space-y-6 text-stone-300">
+                    <li>A constructor defines the <span class="hl-green">set of code that runs when a class is
+                            instantiated</span>. You can define a constructor, but if undefined, there's a constructor
+                        present for every class. It does not have any arguments.</li>
+                    <li>Constructors <span class="hl-green">doesnt have any return type and is of the same name of the
+                            class</span>.</li>
+                    <li>To instantiate a class, You use the <code class="text-amber-400 font-bold">new</code> keyword.
+                    </li>
+                    <li><span class="text-white font-bold">Rule:</span> if you define a constructor of your own, you
+                        need to explicitly define the no argument constructor.</li>
+                </ul>
+            </section>
+
+            <section class="my-20">
+                <h2 class="text-4xl font-extrabold text-white mb-8 ">Concept 5 - Static
+                    :-</h2>
+
+                <ul class="list-disc list-outside ml-6 space-y-6 text-stone-300">
+                    <li>In Apex classes, <span class="hl-green">You have static variables as well as methods</span>.
+                        However, <span class="hl-red">classes cannot be static</span>.</li>
+                    <li>Static keyword is used when you want something to be initialized once along with the class.</li>
+                    <li>Internally, when a class is loaded, all static members are initialized first in the order they
+                        are written in the class.</li>
+
+                    <li class="list-none">
+                        <div class="bg-amber-500/5 border border-amber-500/20 p-6 rounded-2xl my-4">
+                            <p class="text-sm leading-relaxed">
+                                <span
+                                    class="text-amber-500 font-bold uppercase tracking-tighter mr-2 underline">Note:</span>
+                                A static variable is <span class="hl-green">consistent and static</span> only within the
+                                scope of the current apex transaction, which means as soon as a new transaction begins,
+                                it is reset.
+                            </p>
+                        </div>
+                    </li>
+
+                    <li>You will notice the use of static variables to <span class="hl-green">avoid recursion in
+                            Triggers</span>.</li>
+                </ul>
+            </section>
+
+            <section class="my-20">
+                <h2 class="text-4xl font-extrabold text-white mb-8">Concept 6 - Extends :-</h2>
+                <ul class="list-disc ml-6 space-y-4 text-stone-300">
+                    <li>A class can extend another class - meaning it inherits the properties of that class.</li>
+                    <li>You can define a class using the <span
+                            class="text-orange-400 bg-orange-400/20 px-2 rounded">virtual keyword</span> if you wnat it
+                        to be extended You can use this class using the extends keyword in the class that needs to
+                        inherit its properties.</li>
+                    <li>To use the methods of the <span class="hl-green">extended class</span>, you can use the <span
+                            class="hl-green">override method</span>.</li>
+                    <li>Note: You can only <span class="hl-green">extend one class</span>, not more than that .</li>
+                </ul>
+            </section>
+
+            <section class="blog-section max-w-3xl mx-auto">
+                <h2 class="text-4xl font-extrabold text-white mb-4 uppercase tracking-tighter">Operations & Function:-
+                </h2>
+                <p class="text-xl font-bold text-stone-300 mb-8">Conditionals in Apex</p>
+
+                <ul class="blog-list mb-12 uppercase">
+                    <li>IF</li>
+                    <li>SWITCH</li>
+                </ul>
+
+                <p class="text-stone-400 mb-8">Write a Method that sends an alert based on the kind of user action.</p>
+
+                <ol class="space-y-4 text-stone-200 list-decimal ml-6">
+                    <li><span class="hl-red">If user made a purchase</span>, <span class="hl-green">send an
+                            alert.</span></li>
+                    <li><span class="hl-red">if user is a premium member</span>, <span class="hl-green">send an alert
+                            with a cupon code.</span></li>
+                    <li><span class="hl-red">if user has sign up</span>, <span class="hl-green">send an alert for
+                            welcome bonus.</span></li>
+                    <li><span class="hl-red">if user has requested a refund</span>, <span class="hl-green">send an alert
+                            for customer satisfaction.</span></li>
+                    <li><span class="hl-red">if user has done none of them</span>, <span class="hl-green">don't send any
+                            alerts</span></li>
+                </ol>
+
+                <div class="my-10">
+                    <p class="text-amber-500 font-mono text-sm mb-4">// Logic Implementation for if</p>
+                    <pre><code class="language-java">
+public class UserActionController {
+    public void handleUserAlerts(String userAction) {
+        if (userAction == 'PURCHASE') {
+            System.debug('Alert: Purchase confirmed!');
+        }
+    }
+}
+</code></pre>
+                </div>
+
+                <div class="my-10">
+                    <p class="text-amber-500 font-mono text-sm mb-4">// Logic Implementation for Switch</p>
+                    <pre><code class="language-java">
+public static void handleMyScheduleSwitchCase(Integer timeInHours){
+    switch on timeInHours{
+        when 9 {
+            System.debug('It\'s breakfast time!');
+        }
+        when 13 {
+            System.debug('It\'s Lunch time!');
+        }
+        when 16, 19 {
+            System.debug('It\'s time to play outside');
+        }
+        when 21{
+            System.debug('It\'s Dinner Time');
+        }
+        when else{
+            System.debug('Free time Lets sleep');
+        }
+    }
+        
+}
+
+                    </code></pre>
+
+                </div>
+            </section>
+
+            <section class="mb-20">
+                <h2 class="text-3xl font-bold text-white mb-8">Operators in Apex</h2>
+                <div class="my-12">
+                    <p class="mb-6 text-stone-400">Go through the table for <span class="hl-green">AND && </span></p>
+
+                    <div class="truth-table-container">
+                        <div class="truth-row">
+                            <span class="text-white">TRUE</span>
+                            <span class="t-op text-sm">AND</span>
+                            <span class="t-true">TRUE = TRUE</span>
+                        </div>
+                        <div class="truth-row">
+                            <span class="text-white">TRUE</span>
+                            <span class="t-op text-sm">AND</span>
+                            <span class="t-false">FALSE = FALSE</span>
+                        </div>
+                        <div class="truth-row">
+                            <span class="text-white">FALSE</span>
+                            <span class="t-op text-sm">AND</span>
+                            <span class="t-false">TRUE = FALSE</span>
+                        </div>
+                        <div class="truth-row">
+                            <span class="text-white">FALSE</span>
+                            <span class="t-op text-sm">AND</span>
+                            <span class="t-false">FALSE = FALSE</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="my-12">
+                    <p class="mb-6 text-stone-400">Go through the table for <span class="hl-green">OR || </span></p>
+                    <div class="truth-table-container">
+                        <div class="truth-row">
+                            <span class="text-white">TRUE</span>
+                            <span class="t-op text-sm">OR</span>
+                            <span class="t-true">TRUE = TRUE</span>
+                        </div>
+                        <div class="truth-row">
+                            <span class="text-white">TRUE</span>
+                            <span class="t-op text-sm">OR</span>
+                            <span class="t-false">FALSE = TRUE</span>
+                        </div>
+                        <div class="truth-row">
+                            <span class="text-white">FALSE</span>
+                            <span class="t-op text-sm">OR</span>
+                            <span class="t-false">TRUE = TRUE</span>
+                        </div>
+                        <div class="truth-row">
+                            <span class="text-white">FALSE</span>
+                            <span class="t-op text-sm">OR</span>
+                            <span class="t-false">FALSE = FALSE</span>
+
+                        </div>
+
+                    </div>
+
+            </section>
+
+            <section class="mb-20">
+                <p class="text-xl font-bold text-stone-300 mb-8">Collections in Apex</p>
+
+                <img src="../assets/CollectionDiagram.png"
+                    alt="Diagram showing Salesforce Apex Collections divided into List, Set, and Map"
+                    class="w-full max-w-3xl h-auto mx-auto rounded-lg">
+
+                <p class="text-stone-400 text-sm mt-6">
+                    Visual representation of the three main collection types in Apex.
+                </p>
+
+            </section>
 
 
 
