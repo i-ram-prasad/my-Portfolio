@@ -92,21 +92,4 @@ window.addEventListener('resize', setCanvasSize);
 initParticles();
 animate();
 
-// Function to show the New Year Popup
-window.onload = function() {
-    const popup = document.getElementById('newYearPopup');
-    
-    // Check if the user has already seen it this session
-    if (!sessionStorage.getItem('newYearSeen')) {
-        popup.classList.remove('hidden');
-    }
-};
 
-// Function to close the popup
-function closePopup() {
-    const popup = document.getElementById('newYearPopup');
-    popup.classList.add('hidden');
-    
-    // Save to session storage so it doesn't pop up again on every refresh
-    sessionStorage.setItem('newYearSeen', 'true');
-}
