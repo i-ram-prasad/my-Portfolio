@@ -534,7 +534,7 @@ public static void handleMyScheduleSwitchCase(Integer timeInHours){
             </section>
 
             <section class="mb-20">
-                <p class="text-xl font-bold text-stone-300 mb-8">Collections in Apex</p>
+                <h2 class="text-xl font-bold text-stone-300 mb-8">Collections in Apex</h2>
 
                 <img src="../assets/CollectionDiagram.png"
                     alt="Diagram showing Salesforce Apex Collections divided into List, Set, and Map"
@@ -543,6 +543,60 @@ public static void handleMyScheduleSwitchCase(Integer timeInHours){
                 <p class="text-stone-400 text-sm mt-6">
                     Visual representation of the three main collection types in Apex.
                 </p>
+
+                <p class="text-2xl font-extrabold text-white mb-6">The List Collection</p>
+                <ul class="list-disc ml-6 space-y-3 text-stone-300 mb-10">
+                    <li>List is always <span class="hl-green">ordered</span>.</li>
+                    <li>Can <span class="hl-green">hold duplicate values</span>.</li>
+                    <li>First <span class="hl-green">index</span> position is <span class="hl-green">always 0</span>.
+                    </li>
+                </ul>
+
+                <pre class="bg-stone-900 p-6 rounded-2xl border border-stone-800 overflow-x-auto">
+<code class="language-java">List&lt;Integer&gt; myList = new List&lt;Integer&gt;(); // Define a new list
+myList.add(47); // Adds element to the end
+Integer i = myList.get(0); // Retrieve element from index 0
+myList.set(0, 1); //Adds the integer 1 to the list at index 0
+myList.clear(); // Remove all the elements from the list </code></pre>
+
+                <p class="text-2xl font-extrabold text-white mb-6">The Set Collection</p>
+                <ul class="list-disc ml-6 space-y-3 text-stone-300 mb-10">
+                    <li>Set is also a collection of elements</li>
+                    <li>Collection of <span class="hl-green">same type</span> of elements.</li>
+                    <li>Set is <span class="hl-green">unordered</span>.</li>
+                    <li>Set does not hold <span class="hl-green">duplicate values</span> always have to be unique</li>
+                    <li>First <span class="hl-green">index</span> position is <span class="hl-green">always 0</span>.
+                    </li>
+                </ul>
+
+                <pre class="bg-stone-900 p-6 rounded-2xl border border-stone-800 overflow-x-auto">
+<code class="language-java">// Define a new set
+Set<Integer> mySet = new Set<Integer>();
+// Add two elements to the set
+mySet.add(1);
+mySet.add(3);
+// Assert that the set contains the integer value we added
+System.assert(mySet.contains(1));
+// Remove the integer value from the set
+mySet.remove(1);</code></pre>
+
+                <p class="text-2xl font-extrabold text-white mb-6">The Map Collection</p>
+                <ul class="list-disc ml-6 space-y-3 text-stone-300 mb-10">
+                    <li> Map is a Colleciton of <span class="hl-green">key value pairs</span>.</li>
+                    <li><span class="hl-red">Keys are always unique</span>,<span class="hl-green">Values can be duplicate</span>.</li>
+                    <li>if i put a new value with same key then its not show any error insted you will see it <span class="hl-green">replace with new value</span>.</li>
+                </ul>
+                <pre class="bg-stone-900 p-6 rounded-2xl border border-stone-800 overflow-x-auto">
+<code class="language-java">Map<Integer, String> m = new Map<Integer, String>(); // Define a new map
+m.put(1, 'First entry');
+m.put(2, 'Second entry');
+System.assert(m.containsKey(1)); // Assert that the map contains a key
+String value =m.get(2);
+System. assertEquals('Second entry', value);
+Set<Integer> s = m.keySet();
+</code></pre>
+
+
 
             </section>
 
