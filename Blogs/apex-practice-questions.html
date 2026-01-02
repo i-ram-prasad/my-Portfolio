@@ -14,6 +14,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
+
+    <link rel="icon" type="image/png" href="../assets/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+    <link rel="shortcut icon" href="../assets/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="MyWebSite" />
+    <link rel="manifest" href="../assets/site.webmanifest" />
+
+
     <style>
         :root {
             --primary-amber: #f59e0b;
@@ -56,7 +65,9 @@
     </header>
 
     <header class="max-w-4xl mx-auto pt-20 pb-12 px-6">
-        <span class="text-amber-500 font-mono text-sm uppercase tracking-[0.3em]">Hands-on practice</span><a href ="https://salesforcemakessense.com/" class="font-mono text-sm uppercase tracking-[0.3em] hover:text-amber-500"> By Salesforce makes sence</a>
+        <span class="text-amber-500 font-mono text-sm uppercase tracking-[0.3em]">Hands-on practice</span><a
+            href="https://salesforcemakessense.com/"
+            class="font-mono text-sm uppercase tracking-[0.3em] hover:text-amber-500"> By Salesforce makes sence</a>
         <h1 class="text-5xl md:text-7xl font-black mt-4 mb-8 tracking-tighter">
             Apex Practice <span class="text-amber-500 italic">Questions</span>
         </h1>
@@ -71,23 +82,26 @@
 
         <!-- First Question -->
         <section class="mb-16">
-
             <div class="bg-stone-900/50 border border-stone-800 p-8 rounded-3xl">
-                <p class="font-bold text-white mb-4">Scenario: Password Attempt Counter</p>
-                <p class="text-stone-400 text-sm leading-relaxed mb-6">
-                    Write a method that checks a list of password attempts against a <span
-                        class="hl-amber">correctPassword</span> string.
-                    If the attempt fails, increment an <span class="hl-amber">attemptCounter</span>.
-                    If failed attempts reach <span class="hl-green">3</span>, throw an error and lock the account.
-                </p>
 
-                <div class="relative group">
-                    <div
-                        class="absolute -inset-1 bg-gradient-to-r from-amber-500/20 to-transparent rounded-xl blur opacity-25 group-hover:opacity-50 transition">
-                    </div>
-                    <pre
-                        class="relative bg-stone-950 p-6 rounded-xl border border-stone-800 text-xs leading-relaxed overflow-x-auto language-java">
-<code class="language-java">public class PracticeQ1 {
+                <div>
+                    <p class="font-bold text-white mb-4">Scenario: Password Attempt Counter</p>
+                    <p class="text-stone-400 text-sm leading-relaxed mb-8">
+                        Write a method that checks a list of password attempts against a <span
+                            class="hl-amber">correctPassword</span> string.
+                        If the attempt fails, increment an <span class="hl-amber">attemptCounter</span>.
+                        If failed attempts reach <span class="hl-green">3</span>, throw an error and lock the account.
+                    </p>
+                </div>
+
+                <div class="mb-10">
+                    <p class="text-xs text-stone-500 uppercase tracking-widest mb-3">Apex Class Solution</p>
+                    <div class="relative group">
+                        <div
+                            class="absolute -inset-1 bg-gradient-to-r from-amber-500/20 to-transparent rounded-xl blur opacity-25 group-hover:opacity-50 transition">
+                        </div>
+                        <pre
+                            class="relative bg-stone-950 p-6 rounded-xl border border-stone-800 text-xs leading-relaxed overflow-x-auto language-java"><code class="language-java">public class PracticeQ1 {
     public static String correctPassword = 'Jun3040';
     public static Integer attemptCounter = 0;
 
@@ -102,50 +116,190 @@
 
             if(attemptCounter == 3) {
                 System.debug('Account Locked');
+                break; // Stop processing once locked
             }
         }
     }
 }</code></pre>
+                    </div>
                 </div>
+
+                <hr class="border-stone-800/60 my-8">
+
+                <div>
+                    <p class="text-xs text-amber-500 uppercase tracking-widest mb-3 flex items-center gap-2">
+                        <span>⚡</span> Execute in Anonymous Window
+                    </p>
+                    <div class="relative group">
+                        <div
+                            class="absolute -inset-1 bg-gradient-to-r from-amber-500/20 to-transparent rounded-xl blur opacity-25 group-hover:opacity-50 transition">
+                        </div>
+                        <pre
+                            class="relative bg-stone-950 p-6 rounded-xl border border-stone-800 text-xs leading-relaxed overflow-x-auto language-java"><code class="language-java">// 1. Create a list of sample password attempts
+List&lt;String&gt; myTries = new List&lt;String&gt;();
+myTries.add('password123'); // Fails
+myTries.add('wrongPass');    // Fails
+myTries.add('Jun3040');      // Success!
+
+// 2. Execute the logic
+PracticeQ1.handlePasswordWithLoop(myTries);
+
+// 3. Check logs to see the 'Success' or 'failure' messages</code></pre>
+                    </div>
+                </div>
+
             </div>
+        </section>
 
-            <!-- Second Question -->
-        <!-- </section>
-
+        <!-- Second Question -->
         <section class="mb-16">
-
             <div class="bg-stone-900/50 border border-stone-800 p-8 rounded-3xl">
-                <p class="font-bold text-white mb-4">Scenario: Learning Counter</p>
-                <p class="text-stone-400 text-sm leading-relaxed mb-6">
-                    Write a <span class="hl-amber">method</span> that display a log of the number of <span class="hl-green">days</span> you learned something new from Salesforce Make Sense.
-                </p>
 
-                <div class="relative group">
-                    <div
-                        class="absolute -inset-1 bg-gradient-to-r from-amber-500/20 to-transparent rounded-xl blur opacity-25 group-hover:opacity-50 transition">
-                    </div>
-                    <pre
-                        class="relative bg-stone-950 p-6 rounded-xl border border-stone-800 text-xs leading-relaxed overflow-x-auto language-java">
-<code class="language-java">public class PracticeQ1 {
-    public static String correctPassword = 'Jun3040';
-    public static Integer attemptCounter = 0;
+                <div>
+                    <p class="font-bold text-white mb-4">Scenario: Learning Counter</p>
+                    <p class="text-stone-400 text-sm leading-relaxed mb-8">
+                        Write a <span class="hl-amber">method</span> that display a log of the number of <span
+                            class="hl-green">days</span> you learned something new from Salesforce Make Sense.
+                    </p>
+                </div>
 
-    public static void handlePasswordWithLoop(List&lt;String&gt; tries) {
-        for(String s : tries) {
-            if(s != correctPassword) {
-                attemptCounter++;
-                System.debug('failure');
-            } else {
-                System.debug('Success');
-            }
+                <div class="mb-10">
+                    <p class="text-xs text-stone-500 uppercase tracking-widest mb-3">Apex Class Solution</p>
 
-            if(attemptCounter == 3) {
-                System.debug('Account Locked');
+                    <div class="relative group">
+                        <div
+                            class="absolute -inset-1 bg-gradient-to-r from-amber-500/20 to-transparent rounded-xl blur opacity-25 group-hover:opacity-50 transition">
+                        </div>
+                        <pre
+                            class="relative bg-stone-950 p-6 rounded-xl border border-stone-800 text-xs leading-relaxed overflow-x-auto language-java"><code class="language-java">public class PracticeQ1 {
+    // Note: Changed 'weekLog' type to match the requirement (Map)
+    public static Integer checkNewLearning(Map&lt;String, Boolean&gt; weekLog){
+        Integer numberOfDaysILearnentSomeThingNew = 0;
+        
+        // Iterate over the map keys (the days of the week)
+        for(String weekDay : weekLog.keySet()){
+            Boolean currentDayStatus = weekLog.get(weekDay);
+
+            // If status is true, increment counter
+            if(currentDayStatus){
+                numberOfDaysILearnentSomeThingNew++;
             }
         }
+        return numberOfDaysILearnentSomeThingNew;
     }
 }</code></pre>
+                    </div>
                 </div>
+
+
+                <hr class="border-stone-800/60 my-8">
+
+
+                <div>
+                    <p class="text-xs text-amber-500 uppercase tracking-widest mb-3 flex items-center gap-2">
+                        <span>⚡</span> Execute in Anonymous Window
+                    </p>
+
+                    <div class="relative group">
+                        <div
+                            class="absolute -inset-1 bg-gradient-to-r from-amber-500/20 to-transparent rounded-xl blur opacity-25 group-hover:opacity-50 transition">
+                        </div>
+                        <pre
+                            class="relative bg-stone-950 p-6 rounded-xl border border-stone-800 text-xs leading-relaxed overflow-x-auto language-java"><code class="language-java">// 1. Prepare the data sample (Map of Day -> Learned Status)
+Map&lt;String, Boolean&gt; myWeekLog = new Map&lt;String, Boolean&gt;();
+myWeekLog.put('Monday', true);
+myWeekLog.put('Tuesday', false);
+myWeekLog.put('Wednesday', true);
+myWeekLog.put('Thursday', true);
+myWeekLog.put('Friday', false);
+
+// 2. Call the static method and store result
+Integer daysLearned = PracticeQ1.checkNewLearning(myWeekLog);
+
+// 3. Verify the result in Debug Logs
+System.debug('--- Results ---');
+System.debug('Total days I learned something new: ' + daysLearned);
+
+// Expected Debug Output: 3</code></pre>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Third Question and Answer -->
+
+        <!-- <section class="mb-16">
+            <div class="bg-stone-900/50 border border-stone-800 p-8 rounded-3xl">
+
+                <div>
+                    <p class="font-bold text-white mb-4">Scenario: Counter</p>
+                    <p class="text-stone-400 text-sm leading-relaxed mb-8">
+                        Write a method that tracks the <span class="hl-amber">number of times</span> '“makes Sense” is used in <span class=" hl-green">List of String</span>.
+                    </p>
+                </div>
+
+                <div class="mb-10">
+                    <p class="text-xs text-stone-500 uppercase tracking-widest mb-3">Apex Class Solution</p>
+
+                    <div class="relative group">
+                        <div
+                            class="absolute -inset-1 bg-gradient-to-r from-amber-500/20 to-transparent rounded-xl blur opacity-25 group-hover:opacity-50 transition">
+                        </div>
+                        <pre
+                            class="relative bg-stone-950 p-6 rounded-xl border border-stone-800 text-xs leading-relaxed overflow-x-auto language-java"><code class="language-java">public class PracticeQ1 {
+    // Note: Changed 'weekLog' type to match the requirement (Map)
+    public static Integer checkNewLearning(Map&lt;String, Boolean&gt; weekLog){
+        Integer numberOfDaysILearnentSomeThingNew = 0;
+        
+        // Iterate over the map keys (the days of the week)
+        for(String weekDay : weekLog.keySet()){
+            Boolean currentDayStatus = weekLog.get(weekDay);
+
+            // If status is true, increment counter
+            if(currentDayStatus){
+                numberOfDaysILearnentSomeThingNew++;
+            }
+        }
+        return numberOfDaysILearnentSomeThingNew;
+    }
+}</code></pre>
+                    </div>
+                </div>
+
+
+                <hr class="border-stone-800/60 my-8">
+
+
+                <div>
+                    <p class="text-xs text-amber-500 uppercase tracking-widest mb-3 flex items-center gap-2">
+                        <span>⚡</span> Execute in Anonymous Window
+                    </p>
+
+                    <div class="relative group">
+                        <div
+                            class="absolute -inset-1 bg-gradient-to-r from-amber-500/20 to-transparent rounded-xl blur opacity-25 group-hover:opacity-50 transition">
+                        </div>
+                        <pre
+                            class="relative bg-stone-950 p-6 rounded-xl border border-stone-800 text-xs leading-relaxed overflow-x-auto language-java"><code class="language-java">// 1. Prepare the data sample (Map of Day -> Learned Status)
+Map&lt;String, Boolean&gt; myWeekLog = new Map&lt;String, Boolean&gt;();
+myWeekLog.put('Monday', true);
+myWeekLog.put('Tuesday', false);
+myWeekLog.put('Wednesday', true);
+myWeekLog.put('Thursday', true);
+myWeekLog.put('Friday', false);
+
+// 2. Call the static method and store result
+Integer daysLearned = PracticeQ1.checkNewLearning(myWeekLog);
+
+// 3. Verify the result in Debug Logs
+System.debug('--- Results ---');
+System.debug('Total days I learned something new: ' + daysLearned);
+
+// Expected Debug Output: 3</code></pre>
+                    </div>
+                </div>
+
             </div>
         </section> -->
 
