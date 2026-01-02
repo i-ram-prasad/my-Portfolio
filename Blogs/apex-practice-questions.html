@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex Practice Questions </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Fira+Code&display=swap"
+        rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-twilight.min.css" rel="stylesheet" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
+    <style>
+        :root {
+            --primary-amber: #f59e0b;
+            --stone-950: #0c0a09;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--stone-950);
+            color: #e7e5e4;
+        }
+
+        .hl-green {
+            background: rgba(74, 222, 128, 0.1);
+            color: #4ade80;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .hl-amber {
+            background: rgba(245, 158, 11, 0.1);
+            color: #f59e0b;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        ::selection {
+            background-color: var(--primary-amber);
+            color: var(--stone-950);
+        }
+    </style>
+</head>
+
+<body class="min-h-screen">
+
+    <header
+        class="p-6 border-b border-stone-800 flex justify-between items-center sticky top-0 bg-stone-950/80 backdrop-blur-md z-50">
+        <a href="../index.html" class="text-amber-500 font-bold text-xl">RP.</a>
+        <a href="index.html" class="text-stone-400 hover:text-white transition-all text-sm">← All Chapters</a>
+    </header>
+
+    <header class="max-w-4xl mx-auto pt-20 pb-12 px-6">
+        <span class="text-amber-500 font-mono text-sm uppercase tracking-[0.3em]">Hands-on practice</span><a href ="https://salesforcemakessense.com/" class="font-mono text-sm uppercase tracking-[0.3em] hover:text-amber-500"> By Salesforce makes sence</a>
+        <h1 class="text-5xl md:text-7xl font-black mt-4 mb-8 tracking-tighter">
+            Apex Practice <span class="text-amber-500 italic">Questions</span>
+        </h1>
+        <p class="text-stone-400 text-lg leading-relaxed max-w-2xl">
+            Master the fundamentals of Salesforce development with these targeted exercises. These questions cover
+            everything from <span class="hl-amber">Variables</span> to <span class="hl-amber">Advanced
+                Collections</span>.
+        </p>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-6 pb-20">
+
+        <!-- First Question -->
+        <section class="mb-16">
+
+            <div class="bg-stone-900/50 border border-stone-800 p-8 rounded-3xl">
+                <p class="font-bold text-white mb-4">Scenario: Password Attempt Counter</p>
+                <p class="text-stone-400 text-sm leading-relaxed mb-6">
+                    Write a method that checks a list of password attempts against a <span
+                        class="hl-amber">correctPassword</span> string.
+                    If the attempt fails, increment an <span class="hl-amber">attemptCounter</span>.
+                    If failed attempts reach <span class="hl-green">3</span>, throw an error and lock the account.
+                </p>
+
+                <div class="relative group">
+                    <div
+                        class="absolute -inset-1 bg-gradient-to-r from-amber-500/20 to-transparent rounded-xl blur opacity-25 group-hover:opacity-50 transition">
+                    </div>
+                    <pre
+                        class="relative bg-stone-950 p-6 rounded-xl border border-stone-800 text-xs leading-relaxed overflow-x-auto language-java">
+<code class="language-java">public class PracticeQ1 {
+    public static String correctPassword = 'Jun3040';
+    public static Integer attemptCounter = 0;
+
+    public static void handlePasswordWithLoop(List&lt;String&gt; tries) {
+        for(String s : tries) {
+            if(s != correctPassword) {
+                attemptCounter++;
+                System.debug('failure');
+            } else {
+                System.debug('Success');
+            }
+
+            if(attemptCounter == 3) {
+                System.debug('Account Locked');
+            }
+        }
+    }
+}</code></pre>
+                </div>
+            </div>
+
+            <!-- Second Question -->
+        <!-- </section>
+
+        <section class="mb-16">
+
+            <div class="bg-stone-900/50 border border-stone-800 p-8 rounded-3xl">
+                <p class="font-bold text-white mb-4">Scenario: Learning Counter</p>
+                <p class="text-stone-400 text-sm leading-relaxed mb-6">
+                    Write a <span class="hl-amber">method</span> that display a log of the number of <span class="hl-green">days</span> you learned something new from Salesforce Make Sense.
+                </p>
+
+                <div class="relative group">
+                    <div
+                        class="absolute -inset-1 bg-gradient-to-r from-amber-500/20 to-transparent rounded-xl blur opacity-25 group-hover:opacity-50 transition">
+                    </div>
+                    <pre
+                        class="relative bg-stone-950 p-6 rounded-xl border border-stone-800 text-xs leading-relaxed overflow-x-auto language-java">
+<code class="language-java">public class PracticeQ1 {
+    public static String correctPassword = 'Jun3040';
+    public static Integer attemptCounter = 0;
+
+    public static void handlePasswordWithLoop(List&lt;String&gt; tries) {
+        for(String s : tries) {
+            if(s != correctPassword) {
+                attemptCounter++;
+                System.debug('failure');
+            } else {
+                System.debug('Success');
+            }
+
+            if(attemptCounter == 3) {
+                System.debug('Account Locked');
+            }
+        }
+    }
+}</code></pre>
+                </div>
+            </div>
+        </section> -->
+
+
+    </main>
+
+    <footer class="border-t border-stone-800 py-12 text-center text-stone-600 text-sm">
+        Made with ❤️ by Ram Prasad | 2026
+    </footer>
+
+</body>
+
+</html>
