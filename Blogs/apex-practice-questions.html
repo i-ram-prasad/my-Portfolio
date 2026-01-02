@@ -229,7 +229,7 @@ System.debug('Total days I learned something new: ' + daysLearned);
 
         <!-- Third Question and Answer -->
 
-        <!-- <section class="mb-16">
+        <section class="mb-16">
             <div class="bg-stone-900/50 border border-stone-800 p-8 rounded-3xl">
 
                 <div>
@@ -248,22 +248,17 @@ System.debug('Total days I learned something new: ' + daysLearned);
                         </div>
                         <pre
                             class="relative bg-stone-950 p-6 rounded-xl border border-stone-800 text-xs leading-relaxed overflow-x-auto language-java"><code class="language-java">public class PracticeQ1 {
-    // Note: Changed 'weekLog' type to match the requirement (Map)
-    public static Integer checkNewLearning(Map&lt;String, Boolean&gt; weekLog){
-        Integer numberOfDaysILearnentSomeThingNew = 0;
-        
-        // Iterate over the map keys (the days of the week)
-        for(String weekDay : weekLog.keySet()){
-            Boolean currentDayStatus = weekLog.get(weekDay);
-
-            // If status is true, increment counter
-            if(currentDayStatus){
-                numberOfDaysILearnentSomeThingNew++;
+    public static Integer checkForMakesSenseKeyword(List&lt;String&gt;statements){
+        Integer makesSenseCounter = 0;
+        for(String statement : statements){
+            if(statement.contains('Makes Sense')){
+                makesSenseCounter++;
             }
         }
-        return numberOfDaysILearnentSomeThingNew;
+        return makesSenseCounter;
     }
-}</code></pre>
+}
+</code></pre>
                     </div>
                 </div>
 
@@ -281,27 +276,18 @@ System.debug('Total days I learned something new: ' + daysLearned);
                             class="absolute -inset-1 bg-gradient-to-r from-amber-500/20 to-transparent rounded-xl blur opacity-25 group-hover:opacity-50 transition">
                         </div>
                         <pre
-                            class="relative bg-stone-950 p-6 rounded-xl border border-stone-800 text-xs leading-relaxed overflow-x-auto language-java"><code class="language-java">// 1. Prepare the data sample (Map of Day -> Learned Status)
-Map&lt;String, Boolean&gt; myWeekLog = new Map&lt;String, Boolean&gt;();
-myWeekLog.put('Monday', true);
-myWeekLog.put('Tuesday', false);
-myWeekLog.put('Wednesday', true);
-myWeekLog.put('Thursday', true);
-myWeekLog.put('Friday', false);
-
-// 2. Call the static method and store result
-Integer daysLearned = PracticeQ1.checkNewLearning(myWeekLog);
-
-// 3. Verify the result in Debug Logs
-System.debug('--- Results ---');
-System.debug('Total days I learned something new: ' + daysLearned);
-
-// Expected Debug Output: 3</code></pre>
+                            class="relative bg-stone-950 p-6 rounded-xl border border-stone-800 text-xs leading-relaxed overflow-x-auto language-java"><code class="language-java">List&lt;String&gt; statements = new List&lt;String&gt;();
+statements.add('Ram Prasad, Makes Sense');
+statements.add('salesforce Makes Sense');
+statements.add('no one is make this type of thing sense');
+statements.add('ok thats make sense');
+Integer result = PracticeQ1.checkForMakesSenseKeyword(statements);
+System.debug(result);</code></pre>
                     </div>
                 </div>
 
             </div>
-        </section> -->
+        </section>
 
 
     </main>
