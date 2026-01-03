@@ -235,7 +235,8 @@ System.debug('Total days I learned something new: ' + daysLearned);
                 <div>
                     <p class="font-bold text-white mb-4">Scenario: Counter</p>
                     <p class="text-stone-400 text-base leading-relaxed mb-8">
-                        Write a method that tracks the <span class="hl-amber">number of times</span> '“makes Sense” is used in <span class=" hl-green">List of String</span>.
+                        Write a method that tracks the <span class="hl-amber">number of times</span> '“makes Sense” is
+                        used in <span class=" hl-green">List of String</span>.
                     </p>
                 </div>
 
@@ -291,13 +292,14 @@ System.debug(result);</code></pre>
 
 
         <!-- Forth Question -->
-         <section class="mb-16">
+        <section class="mb-16">
             <div class="bg-stone-900/50 border border-stone-800 p-8 rounded-3xl">
 
                 <div>
                     <p class="font-bold text-white mb-4">Scenario: Highest & Lowest</p>
                     <p class="text-stone-400 text-base leading-relaxed mb-8">
-                        Write a method that check the marks on individual subjects and displays the <span class="hl-green">highest and lowest</span> marks as result.
+                        Write a method that check the marks on individual subjects and displays the <span
+                            class="hl-green">highest and lowest</span> marks as result.
                     </p>
                 </div>
 
@@ -344,6 +346,115 @@ myReportCard.put('Biology', 78);
 myReportCard.put('History', 96);
 
 practiceQ2.checkHighAndLow(myReportCard);</code></pre>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Fift question -->
+        <section class="mb-16">
+            <div class="bg-stone-900/50 border border-stone-800 p-8 rounded-3xl">
+
+                <div>
+                    <p class="font-bold text-white mb-4">Scenario: TO-DO List</p>
+                    <p class="text-stone-400 text-base leading-relaxed mb-8">
+                        Create methods to manage your <span class="hl-green">to do list</span>
+you can <span class="hl-amber">add and remove</span> what you need to do and what you have done
+                    </p>
+                </div>
+
+                <div class="mb-10">
+                    <p class="text-xs text-stone-500 uppercase tracking-widest mb-3">Apex Class Solution</p>
+
+                    <div class="relative group">
+                        <div
+                            class="absolute -inset-1 bg-gradient-to-r from-amber-500/20 to-transparent rounded-xl blur opacity-25 group-hover:opacity-50 transition">
+                        </div>
+                        <pre
+                            class="relative bg-stone-950 p-6 rounded-xl border border-stone-800 text-xs leading-relaxed overflow-x-auto language-java"><code class="language-java">public class PracticeQ2 {
+    public static List&lt;WorkItem&gt;toDoList = new List<WorkItem>();  
+    public static void addNewWorkItem(WorkItem toDoItem){
+        toDoList.add(toDoItem);      
+    } 
+    public static List&lt;PracticeQ2.WorkItem&gt; retriveToDoList(){
+        return toDoList;
+    } 
+    //method to update the item that i have completed
+    public static void updateWorkItem(Integer WorkItemId, String newStatus){
+        //find the work item from my current list. if i find it, I will update the corresponding status
+        for(PracticeQ2.WorkItem workItem : toDoList){
+            if(workItem.toDoId == workItemId){
+                workItem.toDoStatus = newStatus;
+            }
+        }
+        System.debug(toDoList); 
+    }
+    public static void deleteWorkItem(Integer workItemId){
+        Integer indexToRemove = -1;
+        for(Integer i = 0;i < toDoList.size();i++){
+            if(toDoList[i].toDoId == workItemId){
+                indexToRemove = i;
+                break; 
+            }
+        }
+        if(indexToRemove != -1){
+            toDoList.remove(indexToRemove);
+        }
+        System.debug('Update List after deletion: '+toDoList);
+    }
+    public static Integer totalToDoListItems(){
+        return toDoList.size();     
+    }
+    public class WorkItem{
+        public Integer toDoId;
+        public String toDoName;
+        public String toDoDescription;
+        public String toDoStatus;     
+    }
+}
+</code></pre>
+                    </div>
+                </div>
+
+
+                <hr class="border-stone-800/60 my-8">
+
+
+                <div>
+                    <p class="text-xs text-amber-500 uppercase tracking-widest mb-3 flex items-center gap-2">
+                        <span>⚡</span> Execute in Anonymous Window
+                    </p>
+
+                    <div class="relative group">
+                        <div
+                            class="absolute -inset-1 bg-gradient-to-r from-amber-500/20 to-transparent rounded-xl blur opacity-25 group-hover:opacity-50 transition">
+                        </div>
+                        <pre
+                            class="relative bg-stone-950 p-6 rounded-xl border border-stone-800 text-xs leading-relaxed overflow-x-auto language-java"><code class="language-java">PracticeQ2.WorkItem wItem = new PracticeQ2.WorkItem();
+wItem.toDoId = 1;
+wItem.toDoName = 'Record SMS video';
+wItem.toDoDescription = 'Record Practice Questions for my video';
+wItem.toDoStatus = 'In Progress';
+
+PracticeQ2.addNewWorkItem(wItem);
+
+PracticeQ2.WorkItem wItem2 = new PracticeQ2.WorkItem();
+wItem2.toDoId = 2;
+wItem2.toDoName = 'Shop Shelling';
+wItem2.toDoDescription = 'shop is not so crowed so we have to sell it';
+wItem2.toDoStatus = 'Not Started';
+
+PracticeQ2.addNewWorkItem(wItem2);
+
+List&lt;PracticeQ2.WorkItem&gt; workItems = PracticeQ2.retriveToDoList();
+for(PracticeQ2.WorkItem wItem : workItems){
+    System.debug(wItem);
+}
+
+PracticeQ2.updateWorkItem(2, 'Completed');
+PracticeQ2.deleteWorkItem(1);</code></pre>
                     </div>
                 </div>
 
