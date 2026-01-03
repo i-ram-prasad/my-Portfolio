@@ -67,7 +67,7 @@
     <header class="max-w-4xl mx-auto pt-20 pb-12 px-6">
         <span class="text-amber-500 font-mono text-sm uppercase tracking-[0.3em]">Hands-on practice</span><a
             href="https://salesforcemakessense.com/"
-            class="font-mono text-sm uppercase tracking-[0.3em] hover:text-amber-500"> By Salesforce makes sence</a>
+            class="font-mono text-sm uppercase tracking-[0.3em] hover:text-amber-500"> By Salesforce makes sense</a>
         <h1 class="text-5xl md:text-7xl font-black mt-4 mb-8 tracking-tighter">
             Apex Practice <span class="text-amber-500 italic">Questions</span>
         </h1>
@@ -86,7 +86,7 @@
 
                 <div>
                     <p class="font-bold text-white mb-4">Scenario: Password Attempt Counter</p>
-                    <p class="text-stone-400 text-sm leading-relaxed mb-8">
+                    <p class="text-stone-400 text-base leading-relaxed mb-8">
                         Write a method that checks a list of password attempts against a <span
                             class="hl-amber">correctPassword</span> string.
                         If the attempt fails, increment an <span class="hl-amber">attemptCounter</span>.
@@ -157,7 +157,7 @@ PracticeQ1.handlePasswordWithLoop(myTries);
 
                 <div>
                     <p class="font-bold text-white mb-4">Scenario: Learning Counter</p>
-                    <p class="text-stone-400 text-sm leading-relaxed mb-8">
+                    <p class="text-stone-400 text-base leading-relaxed mb-8">
                         Write a <span class="hl-amber">method</span> that display a log of the number of <span
                             class="hl-green">days</span> you learned something new from Salesforce Make Sense.
                     </p>
@@ -234,7 +234,7 @@ System.debug('Total days I learned something new: ' + daysLearned);
 
                 <div>
                     <p class="font-bold text-white mb-4">Scenario: Counter</p>
-                    <p class="text-stone-400 text-sm leading-relaxed mb-8">
+                    <p class="text-stone-400 text-base leading-relaxed mb-8">
                         Write a method that tracks the <span class="hl-amber">number of times</span> '“makes Sense” is used in <span class=" hl-green">List of String</span>.
                     </p>
                 </div>
@@ -283,6 +283,67 @@ statements.add('no one is make this type of thing sense');
 statements.add('ok thats make sense');
 Integer result = PracticeQ1.checkForMakesSenseKeyword(statements);
 System.debug(result);</code></pre>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Forth Question -->
+         <section class="mb-16">
+            <div class="bg-stone-900/50 border border-stone-800 p-8 rounded-3xl">
+
+                <div>
+                    <p class="font-bold text-white mb-4">Scenario: Highest & Lowest</p>
+                    <p class="text-stone-400 text-base leading-relaxed mb-8">
+                        Write a method that check the marks on individual subjects and displays the <span class="hl-green">highest and lowest</span> marks as result.
+                    </p>
+                </div>
+
+                <div class="mb-10">
+                    <p class="text-xs text-stone-500 uppercase tracking-widest mb-3">Apex Class Solution</p>
+
+                    <div class="relative group">
+                        <div
+                            class="absolute -inset-1 bg-gradient-to-r from-amber-500/20 to-transparent rounded-xl blur opacity-25 group-hover:opacity-50 transition">
+                        </div>
+                        <pre
+                            class="relative bg-stone-950 p-6 rounded-xl border border-stone-800 text-xs leading-relaxed overflow-x-auto language-java"><code class="language-java">public class PracticeQ1 {
+    public static void checkHighAndLow(Map&lt;String, Integer&gt;myReport){
+        List&lt;Integer&gt;allMarks = myReport.values();
+        allMarks.sort();
+        
+        System.debug('Max Mark is: '+ allMarks[allMarks.size() - 1]);
+        System.debug('Min Mark is: '+ allMarks[0]); 
+    }
+}
+</code></pre>
+                    </div>
+                </div>
+
+
+                <hr class="border-stone-800/60 my-8">
+
+
+                <div>
+                    <p class="text-xs text-amber-500 uppercase tracking-widest mb-3 flex items-center gap-2">
+                        <span>⚡</span> Execute in Anonymous Window
+                    </p>
+
+                    <div class="relative group">
+                        <div
+                            class="absolute -inset-1 bg-gradient-to-r from-amber-500/20 to-transparent rounded-xl blur opacity-25 group-hover:opacity-50 transition">
+                        </div>
+                        <pre
+                            class="relative bg-stone-950 p-6 rounded-xl border border-stone-800 text-xs leading-relaxed overflow-x-auto language-java"><code class="language-java">Map<String, Integer> myReportCard = new Map&lt;String, Integer&gt;();
+myReportCard.put('Science', 88);
+myReportCard.put('Physics', 68);
+myReportCard.put('Math', 54);
+myReportCard.put('Biology', 78);
+myReportCard.put('History', 96);
+
+practiceQ2.checkHighAndLow(myReportCard);</code></pre>
                     </div>
                 </div>
 
