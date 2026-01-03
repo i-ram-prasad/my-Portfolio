@@ -93,3 +93,22 @@ initParticles();
 animate();
 
 
+function copyCode(btn) {
+    // Find the <code> element relative to the button
+    const container = btn.closest('.code-container');
+    const code = container.querySelector('code').innerText;
+
+    navigator.clipboard.writeText(code).then(() => {
+        // Add 'copied' class for tooltip feedback
+        btn.classList.add('copied');
+        
+        // Change icon color temporarily
+        const originalColor = btn.style.color;
+        btn.style.color = "#4ade80"; 
+
+        setTimeout(() => {
+            btn.classList.remove('copied');
+            btn.style.color = originalColor;
+        }, 2000);
+    });
+}
